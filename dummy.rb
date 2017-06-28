@@ -12,26 +12,34 @@ desired_capsIos = {
         platformName:  'iOS',
         platformVersion: '10.3',
         deviceName:    'iPhone 6',
-        app:           APP_PATH,
+        #app:           APP_PATH,
         automationName: "XCUITest",
-        language: 'en'
+        language: 'en',
+        "browserName": "Safari"
     }
 }
 
 
 
   # Start the driver
-  driver = Appium::Driver.new(desired_capsIos);
-  driver.start_driver;
-  sleep(2);
+  driver = Appium::Driver.new(desired_capsIos)
+  driver.start_driver
+
+sleep(2);
 
   #quit the driver
-  driver.driver_quit;
 
 
 module Dummy
+  module IOS
+    Appium.promote_singleton_appium_methods Dummy
 
+    buttonsAll = buttons;
 
+    sizes = window_size
+    puts sizes.height
+    puts sizes.width
 
-
+    driver_quit
+  end
 end
