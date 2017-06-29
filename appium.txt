@@ -4,4 +4,6 @@
     platformVersion =  "9.3"
     app = "http://appium.github.io/appium/assets/TestApp7.1.app.zip"
     automationName = "XCUITest"
-    language = "rus"
+    language = "en"
+
+
