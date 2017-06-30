@@ -1,0 +1,5 @@
+[caps]
+    pllsatformName = "Android"
+    deviceName =  "Custom Phone"
+    appActivity = ".Settings"
+    appPackage = "com.android.settings"
