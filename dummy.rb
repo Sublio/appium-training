@@ -1,6 +1,8 @@
 require 'rubygems'
 require 'appium_lib'
 require 'rest-client'
+require 'chunky_png'
+require_relative 'ChunkyImageCompareService'
 
 
 
@@ -18,7 +20,7 @@ module Dummy
   module IOS
     Appium.promote_singleton_appium_methods Dummy
 
-
+    screenshot("/Users/denis/Projects/Appium/Training/appium-training/1.png")
 
     textField = textfields
     buttonsAll = buttons
@@ -31,10 +33,15 @@ module Dummy
 
     puts textSum.text
 
-    raise Exception, "Bitch please" if textSum.text != "3"
+    doneButton = find_element(:name => "Done")
+    doneButton.click()
+    sleep(2)
 
-    #driver_quit
-    x
+    screenshot("/Users/denis/Projects/Appium/Training/appium-training/2.png")
+
+    ChunkyImageCompareService.compareTwoImages("1.png", "2.png")
+
+    driver_quit
 
   end
 end
