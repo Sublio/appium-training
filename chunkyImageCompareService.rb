@@ -4,8 +4,6 @@ require 'chunky_png'
 
 class ChunkyImageCompareService
 
-
-
   def self.compareTwoImages(image1Name, image2Name)
 
     images = [

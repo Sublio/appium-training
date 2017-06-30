@@ -32,9 +32,13 @@ class LoginTests < Test::Unit::TestCase
 
 
   def testMethod
+    #button(1).click
+    assert(exists { button('ACCESS WITH EMAIL') } , "There is no button")
 
+  end
+
+  def testMethod2
     button(1).click
-    sleep(5)
   end
 
 

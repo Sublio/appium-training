@@ -2,6 +2,7 @@
 *.rbc
 *.png
 *.DS_Store
+*.app
 /.config
 /coverage/
 /InstalledFiles
