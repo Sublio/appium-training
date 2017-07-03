@@ -2,7 +2,7 @@
     platformName = "iOS"
     deviceName =  "iPhone 6"
     platformVersion =  "9.3"
-    app = "http://appium.github.io/appium/assets/TestApp7.1.app.zip"
+    app = "app/TrustedInsight.app"
     automationName = "XCUITest"
     language = "en"
 

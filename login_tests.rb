@@ -16,7 +16,7 @@ class LoginTests < Test::Unit::TestCase
 
   def setup
 
-    caps = Appium.load_appium_txt file: File.join(Dir.pwd, 'appiumiOSCaps.txt')
+    caps = Appium.load_appium_txt file: File.join(Dir.pwd, 'appiumIOSCaps.txt')
 
     driver = Appium::Driver.new(caps)
     Appium.promote_appium_methods self.class
@@ -32,15 +32,9 @@ class LoginTests < Test::Unit::TestCase
 
 
   def testMethod
-    #button(1).click
-    assert(exists { button('ACCESS WITH EMAIL') } , "There is no button")
+    assert(exists { text('ACCESS WITH EMAIL') } , "There is no button")
 
   end
-
-  def testMethod2
-    button(1).click
-  end
-
 
 
 end

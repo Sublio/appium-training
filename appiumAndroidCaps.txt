@@ -1,5 +1,5 @@
 [caps]
     pllsatformName = "Android"
     deviceName =  "Custom Phone"
-    appActivity = ".Settings"
-    appPackage = "com.android.settings"
+    platformName = 'Android'
+    app = 'app/TrustedInsight.apk'
