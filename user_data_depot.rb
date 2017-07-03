@@ -9,10 +9,11 @@ class UserDataDepot
   def self.arrayOfValidMailsPasswords
 
 
-      validUserMailPassword = [{'mail' =>'b@b.b', 'password' => 'qweasdzxc'},
-                               {'mail' => 'leon@rambler.com	', 'password' => 'qweasdzxc'},
-                               {'mail' => 'andrey@ko.com', 'password' => 'qweasdzxc'},
-                               {'mail' => 'prodavets@mail.com','password' => 'qweasdzxc'}]
+      [{'mail' => 'sublio@rambler.ru', 'password' => 'avatar1260'},
+       {'mail' =>'b@b.b', 'password' => 'qweasdzxc'},
+       {'mail' => 'leon@rambler.com	', 'password' => 'qweasdzxc'},
+       {'mail' => 'andrey@ko.com', 'password' => 'qweasdzxc'},
+       {'mail' => 'prodavets@mail.com','password' => 'qweasdzxc'}]
 
   end
 
