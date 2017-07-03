@@ -3,6 +3,7 @@
 *.png
 *.DS_Store
 *.app
+*.apk
 /.config
 /coverage/
 /InstalledFiles
