@@ -11,5 +11,10 @@ class TIUserExistsService
 
   end
 
+  def self.quickSignUpuser(email, password, firstName, lastName)
+
+
+  end
+
 
 end

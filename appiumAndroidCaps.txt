@@ -1,5 +1,5 @@
 [caps]
-    pllsatformName = "Android"
+    Name = "Android"
     deviceName =  "Custom Phone"
     platformName = 'Android'
     app = 'app/TrustedInsight.apk'

@@ -41,8 +41,6 @@ class LoginTestsIos < Test::Unit::TestCase
     loginButton = find_element(:name, 'LOG IN')
     loginButton.click
 
-
-
     sleep(3)
 
     if (buttons[0].label == "ENABLE NOTIFICATIONS")
@@ -53,7 +51,17 @@ class LoginTestsIos < Test::Unit::TestCase
 
     buttons[1].click #fire for system alert handler
 
-    wait {  button('Home')  }
+    sleep(1)
+    #find_element(:name, 'imgTopLogoTxt').isEmpty
+
+
+    begin
+      topTextLogo_displayed = find_element(:name,"imgTopLogoTxt").displayed?
+    rescue
+      topTextLogo_displayed = false
+    end
+
+    assert(topTextLogo_displayed)
 
     end
 end
