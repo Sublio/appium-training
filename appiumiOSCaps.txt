@@ -6,5 +6,4 @@
     automationName = "XCUITest"
     language = "en"
     autoAcceptAlerts = 'true'
-    full-reset = 'false'
-    noReset = 'true'
+

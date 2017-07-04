@@ -3,3 +3,4 @@
     deviceName =  "Custom Phone"
     platformName = 'Android'
     app = 'app/TrustedInsight.apk'
+    autoAcceptAlerts = 'true'

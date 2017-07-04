@@ -6,3 +6,4 @@
     automationName = "XCUITest"
     language = "en"
     autoAcceptAlerts = 'true'
+
