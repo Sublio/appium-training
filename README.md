@@ -3,7 +3,8 @@ appium_training
 
 
 gem install bundle - install bundler
+gem install rake
 
-bundle exec ruby login_tests_ios.rb - for ios tests 
+rake test_ios - launch ios tests
 
-bundle exec ruby login_tests_android.rb - for android tests
+rake test_ios - launch android tests

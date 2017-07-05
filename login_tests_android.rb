@@ -6,6 +6,7 @@ require_relative 'user_data_depot'
 
 
 # For Launching test install Bundle and then "bundle install & bundle exec ruby login_tests_ios.rb"
+# This suits works only on
 
 
 class LoginTestsAndroid < Test::Unit::TestCase
