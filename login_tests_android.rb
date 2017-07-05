@@ -31,7 +31,9 @@ class LoginTestsAndroid < Test::Unit::TestCase
 
     find('ACCESS WITH EMAIL').click
     first_textfield.type UserDataDepot.arrayOfValidMailsPasswords[0]['mail']
+    sleep(2)
     id('com.thetrustedinsight.tiapp:id/join_ab_next').click
+    sleep(2)
     wait { text('Welcome Denis!') }
     first_textfield.type UserDataDepot.arrayOfValidMailsPasswords[0]['password']
     id('com.thetrustedinsight.tiapp:id/join_ab_next').click
