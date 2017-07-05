@@ -65,6 +65,7 @@ PLATFORMS
 DEPENDENCIES
   appium_lib (~> 9.4.4)
   chunky_png
+  nokogiri
   rest-client (~> 2.0.2)
   rspec (~> 3.6.0)
   rspec-expectations (~> 3.6.0)

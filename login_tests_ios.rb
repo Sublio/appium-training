@@ -1,6 +1,8 @@
 require 'rubygems'
 require 'appium_lib'
 require 'test/unit'
+require 'rest-client'
+require 'nokogiri'
 require_relative 'Services/chunkyImageCompareService'
 require_relative 'user_data_depot'
 
@@ -24,6 +26,7 @@ class LoginTestsIos < Test::Unit::TestCase
   def teardown
     driver_quit
   end
+
 
 
 
