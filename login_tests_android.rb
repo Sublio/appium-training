@@ -42,4 +42,11 @@ class LoginTestsAndroid < Test::Unit::TestCase
     wait { text('TrustedInsight')} #wait for app fully loaded
 
   end
+
+
+  def testLoginWithGoogleAccount
+
+    find('ACCESS WITH GOOGLE').click
+
+  end
 end

@@ -3,7 +3,8 @@ appium_training
 
 
 gem install bundle - install bundler
-gem install rake
+
+gem install rake - install rake
 
 rake test_ios - launch ios tests
 

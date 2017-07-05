@@ -4,6 +4,7 @@ require 'test/unit'
 require 'rest-client'
 require 'nokogiri'
 require_relative 'Services/chunkyImageCompareService'
+require_relative 'Services/google_acc_loginer'
 require_relative 'user_data_depot'
 
 
@@ -66,5 +67,27 @@ class LoginTestsIos < Test::Unit::TestCase
 
     assert(topTextLogo_displayed)
 
+  end
+
+
+  def testLoginWithGoogleAccount
+
+    find('ACCESS WITH GOOGLE').click
+    GoogleLoginer.loginWithGoogleAccount('test.device@rosberry.com', 'B1tchA$$3')
+
+    if (buttons[0].label == "ENABLE NOTIFICATIONS")
+
+      buttons[0].click
+
     end
+
+    begin
+      topTextLogo_displayed = find_element(:name,"imgTopLogoTxt").displayed?
+    rescue
+      topTextLogo_displayed = false
+    end
+
+    assert(topTextLogo_displayed)
+
+  end
 end
