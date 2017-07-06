@@ -13,7 +13,7 @@ class LoginTestsAndroid < Test::Unit::TestCase
 
   def setup
 
-    caps = Appium.load_appium_txt file: File.join(Dir.pwd, 'appiumAndroidCaps.txt')
+    caps = Appium.load_appium_txt file: File.join(Dir.pwd, 'caps/appiumAndroidCaps.txt')
 
     driver = Appium::Driver.new(caps)
     Appium.promote_appium_methods self.class

@@ -4,8 +4,6 @@ require 'appium_lib'
 class GoogleLoginer
 
 
-  Appium.promote_appium_methods self.class
-
   def self.loginWithGoogleAccount(email, password)
 
 =begin
@@ -34,3 +32,4 @@ class GoogleLoginer
 
 =end
   end
+end

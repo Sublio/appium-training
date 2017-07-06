@@ -4,23 +4,22 @@ require 'test/unit'
 require 'rest-client'
 require 'nokogiri'
 require_relative 'Services/chunkyImageCompareService'
-#require_relative 'Services/google_acc_loginer'
+require_relative 'Services/google_acc_loginer'
 require_relative 'user_data_depot'
 
-
-# For Launching test install Bundle and then "bundle install & bundle exec ruby login_tests_ios.rb"
 
 
 class LoginTestsIos < Test::Unit::TestCase
 
+
+
   def setup
 
-    caps = Appium.load_appium_txt file: File.join(Dir.pwd, 'appiumIOSCaps.txt')
+    caps = Appium.load_appium_txt file: File.join(Dir.pwd, 'caps/appiumIOSCapsResetSim.txt')
 
     driver = Appium::Driver.new(caps)
     Appium.promote_appium_methods self.class
     driver.start_driver
-
   end
 
 
@@ -56,8 +55,6 @@ class LoginTestsIos < Test::Unit::TestCase
     buttons[1].click #fire for system alert handler
 
     sleep(1)
-    #find_element(:name, 'imgTopLogoTxt').isEmpty
-
 
     begin
       topTextLogo_displayed = find_element(:name,"imgTopLogoTxt").displayed?

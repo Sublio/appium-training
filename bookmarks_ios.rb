@@ -7,7 +7,7 @@ class BookmarksiOS < Test::Unit::TestCase
 
   def setup
 
-    caps = Appium.load_appium_txt file: File.join(Dir.pwd, 'appiumIOSCaps.txt')
+    caps = Appium.load_appium_txt file: File.join(Dir.pwd, 'caps/appiumIOSCaps.txt')
 
     driver = Appium::Driver.new(caps)
     Appium.promote_appium_methods self.class
@@ -23,6 +23,8 @@ class BookmarksiOS < Test::Unit::TestCase
 
   def testAddBookmark
 
+
+    #scroll direction: "down", element:table, to_visible:true, predicate_string:'Assistant Portfolio Manager'
 
   end
 

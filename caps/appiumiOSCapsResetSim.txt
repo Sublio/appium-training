@@ -6,4 +6,5 @@
     automationName = "XCUITest"
     language = "en"
     autoAcceptAlerts = 'true'
-    keepKeyChains = 'false'
+    fullReset = 'true'
+
