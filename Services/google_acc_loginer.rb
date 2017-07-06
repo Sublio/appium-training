@@ -8,7 +8,7 @@ class GoogleLoginer
 
   def self.loginWithGoogleAccount(email, password)
 
-
+=begin
     wait { text 'Choose an account' }
 
     if ( exists { button ('George Irvin test.device@rosberry.com')})
@@ -32,5 +32,5 @@ class GoogleLoginer
 
     end
 
-
+=end
   end

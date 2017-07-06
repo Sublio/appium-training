@@ -4,7 +4,7 @@ require 'test/unit'
 require 'rest-client'
 require 'nokogiri'
 require_relative 'Services/chunkyImageCompareService'
-require_relative 'Services/google_acc_loginer'
+#require_relative 'Services/google_acc_loginer'
 require_relative 'user_data_depot'
 
 
@@ -73,7 +73,7 @@ class LoginTestsIos < Test::Unit::TestCase
   def testLoginWithGoogleAccount
 
     find('ACCESS WITH GOOGLE').click
-    GoogleLoginer.loginWithGoogleAccount('test.device@rosberry.com', 'B1tchA$$3')
+    #GoogleLoginer.loginWithGoogleAccount('test.device@rosberry.com', 'B1tchA$$3')
 
     if (buttons[0].label == "ENABLE NOTIFICATIONS")
 
