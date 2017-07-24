@@ -8,7 +8,7 @@ class WELCOME_PAGE
   end
 
 
-  def loginButton
+  def loginWithEmailButton
 
     if @driver.device_is_android?
 

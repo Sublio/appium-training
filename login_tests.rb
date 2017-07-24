@@ -3,10 +3,11 @@ require 'appium_lib'
 require 'test/unit'
 require 'rest-client'
 require 'nokogiri'
-require_relative 'Services/chunkyImageCompareService'
-require_relative 'Services/google_acc_loginer'
+require 'require_all'
 require_relative 'user_data_depot'
-require_relative 'pages/welcome_page'
+require_all 'pages'
+require_all 'Services'
+
 
 
 class LoginTestsIos < Test::Unit::TestCase
@@ -45,11 +46,25 @@ class LoginTestsIos < Test::Unit::TestCase
   def testLoginWithMail
 
     welcomePage = WELCOME_PAGE.new(@driver)
-    welcomePage.loginButton.click
+    welcomePage.loginWithEmailButton.click
+    loginPage = ENTER_EMAIL_PAGE.new(@driver)
+    loginPage.emailField.type UserDataDepot.arrayOfValidMailsPasswords[0]['mail']
+    sleep 2
+    loginPage.nextButton.click
+    passwordPage = ENTER_PASS_PAGE.new(@driver)
+    sleep 1
+    passwordPage.passField.type UserDataDepot.arrayOfValidMailsPasswords[0]['password']
+
+    passwordPage.nextButton.click
+
+    homePage = HOME.new(@driver)
+
+    wait { button homePage.searchButton }
+
+
   end
 =begin
-    loginTextField = textfields[0]
-    loginTextField.type UserDataDepot.arrayOfValidMailsPasswords[0]['mail']
+
     nextButton = find_element(:name, 'NEXT')
     nextButton.click
     wait { text('Welcome Denis!') }
@@ -88,7 +103,7 @@ class LoginTestsIos < Test::Unit::TestCase
 
     table = find_ele_by_attr('XCUIElementTypeTable', 'type','XCUIElementTypeTable')
 
-    while !exists {text('Log out')} do
+    while !r {text('Log out')} do
 
       scroll direction: "down", element:table
 
