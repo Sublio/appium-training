@@ -8,4 +8,4 @@ gem install rake - install rake
 
 rake test_ios - launch ios tests
 
-rake test_ios - launch android tests
+rake test_android - launch android tests

@@ -1,9 +1,0 @@
-[caps]
-    platformName = "iOS"
-    deviceName =  "iPhone 6"
-    platformVersion =  "9.3"
-    app = "app/TrustedInsight.app"
-    automationName = "XCUITest"
-    language = "en"
-    autoAcceptAlerts = 'true'
-    keepKeyChains = 'false'

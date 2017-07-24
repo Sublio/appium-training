@@ -6,34 +6,48 @@ require 'nokogiri'
 require_relative 'Services/chunkyImageCompareService'
 require_relative 'Services/google_acc_loginer'
 require_relative 'user_data_depot'
-
+require_relative 'pages/welcome_page'
 
 
 class LoginTestsIos < Test::Unit::TestCase
 
+  attr_reader :driver
+
+  if ARGV.include? 'android'
+
+    @@platform = 'android'
+  else
+    @@platform = 'ios'
+  end
 
 
   def setup
 
-    caps = Appium.load_appium_txt file: File.join(Dir.pwd, 'caps/appiumIOSCapsResetSim.txt')
+    if @@platform == 'android'
+      puts 'android caps has been loaded'
+      caps = Appium.load_appium_txt file: File.join(Dir.pwd, 'caps/appiumAndroidCaps.txt')
+    else
+      puts 'ios caps has been loaded'
+      caps = Appium.load_appium_txt file: File.join(Dir.pwd, 'caps/appiumiOSCaps.txt')
+    end
 
-    driver = Appium::Driver.new(caps)
+    @driver = Appium::Driver.new(caps)
     Appium.promote_appium_methods self.class
-    driver.start_driver
+    @driver.start_driver
+
   end
 
 
   def teardown
-    driver_quit
+    @driver.driver_quit
   end
-
-
-
 
   def testLoginWithMail
 
-    loginButton = find_element(:name, 'ACCESS WITH EMAIL')
-    loginButton.click
+    welcomePage = WELCOME_PAGE.new(@driver)
+    welcomePage.loginButton.click
+  end
+=begin
     loginTextField = textfields[0]
     loginTextField.type UserDataDepot.arrayOfValidMailsPasswords[0]['mail']
     nextButton = find_element(:name, 'NEXT')
@@ -66,25 +80,24 @@ class LoginTestsIos < Test::Unit::TestCase
 
   end
 
+  def testLogoutFromCurrentAccount
 
-  def testLoginWithGoogleAccount
+    testLoginWithMail
+    wait { button 'Settings' }
+    find_element(:xpath, "//XCUIElementTypeButton[@name=\"Settings\"]").click
 
-    find('ACCESS WITH GOOGLE').click
-    #GoogleLoginer.loginWithGoogleAccount('test.device@rosberry.com', 'B1tchA$$3')
+    table = find_ele_by_attr('XCUIElementTypeTable', 'type','XCUIElementTypeTable')
 
-    if (buttons[0].label == "ENABLE NOTIFICATIONS")
+    while !exists {text('Log out')} do
 
-      buttons[0].click
+      scroll direction: "down", element:table
 
     end
 
-    begin
-      topTextLogo_displayed = find_element(:name,"imgTopLogoTxt").displayed?
-    rescue
-      topTextLogo_displayed = false
-    end
+    text("Log out").click
 
-    assert(topTextLogo_displayed)
+    wait { text 'Welcome to Trusted Insight' }
 
   end
+=end
 end
