@@ -25,10 +25,8 @@ class LoginTestsIos < Test::Unit::TestCase
   def setup
 
     if @@platform == 'android'
-      puts 'android caps has been loaded'
       caps = Appium.load_appium_txt file: File.join(Dir.pwd, 'caps/appiumAndroidCaps.txt')
     else
-      puts 'ios caps has been loaded'
       caps = Appium.load_appium_txt file: File.join(Dir.pwd, 'caps/appiumiOSCaps.txt')
     end
 
@@ -52,58 +50,36 @@ class LoginTestsIos < Test::Unit::TestCase
     sleep 2
     loginPage.nextButton.click
     passwordPage = ENTER_PASS_PAGE.new(@driver)
-    sleep 1
+    sleep 2
     passwordPage.passField.type UserDataDepot.arrayOfValidMailsPasswords[0]['password']
 
     passwordPage.nextButton.click
 
     homePage = HOME.new(@driver)
 
-    wait { button homePage.searchButton }
+    wait { homePage.searchButton.displayed? }
 
-
-  end
-=begin
-
-    nextButton = find_element(:name, 'NEXT')
-    nextButton.click
-    wait { text('Welcome Denis!') }
-    passwordTextField = textfields[0]
-    passwordTextField.type UserDataDepot.arrayOfValidMailsPasswords[0]['password']
-    loginButton = find_element(:name, 'LOG IN')
-    loginButton.click
-
-    sleep(3)
-
-    if (buttons[0].label == "ENABLE NOTIFICATIONS")
-
-        buttons[0].click
-
-    end
-
-    buttons[1].click #fire for system alert handler
-
-    sleep(1)
-
-    begin
-      topTextLogo_displayed = find_element(:name,"imgTopLogoTxt").displayed?
-    rescue
-      topTextLogo_displayed = false
-    end
-
-    assert(topTextLogo_displayed)
+    homePage.enableNotificationsIfNeeded
 
   end
+
 
   def testLogoutFromCurrentAccount
 
     testLoginWithMail
-    wait { button 'Settings' }
-    find_element(:xpath, "//XCUIElementTypeButton[@name=\"Settings\"]").click
 
-    table = find_ele_by_attr('XCUIElementTypeTable', 'type','XCUIElementTypeTable')
+    bottombar = BOTTOM_NAV_BAR.new(@driver)
 
-    while !r {text('Log out')} do
+    wait { bottombar.settingsButton.displayed?}
+    bottombar.settingsButton.click
+
+    table = SETTINGS_PAGE.new(@driver).tableContainer
+
+    if @driver.device_is_android?
+
+      swipe(start_x: 75, start_y: 500, end_x: 75, end_y: 20, duration: 500)
+
+    else
 
       scroll direction: "down", element:table
 
@@ -111,8 +87,8 @@ class LoginTestsIos < Test::Unit::TestCase
 
     text("Log out").click
 
-    wait { text 'Welcome to Trusted Insight' }
+    wait { text 'Welcome' }
 
   end
-=end
+
 end

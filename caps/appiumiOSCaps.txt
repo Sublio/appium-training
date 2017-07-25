@@ -5,5 +5,5 @@
     app = "app/TrustedInsight.app"
     automationName = "XCUITest"
     language = "en"
-    autoAcceptAlerts = 'true'
+    autoAcceptAlerts = "true"
     fullReset = 'true'
