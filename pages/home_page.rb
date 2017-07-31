@@ -23,6 +23,26 @@ class HOME
     end
   end
 
+
+  def cellFromFeedTableByIndex(index)
+
+
+    if @driver.device_is_android?
+      sleep 3
+      cells = @driver.find_elements(:id, 'com.thetrustedinsight.tiapp:id/sml')
+      table = @driver.find_element(:id, 'com.thetrustedinsight.tiapp:id/recycler')
+      cells[index]
+
+    else
+      sleep(3)
+      cells = @driver.find_elements(:class_name, 'XCUIElementTypeCell')
+      table = @driver.find_element(:class_name, 'XCUIElementTypeTable')
+      cells[index]
+
+    end
+  end
+
+
   def enableNotificationsIfNeeded
 
     if !@driver.device_is_android?

@@ -41,17 +41,17 @@ class LoginTestsIos < Test::Unit::TestCase
     @driver.driver_quit
   end
 
-  def testLoginWithMail
+  def testLoginWithMail(mail = 'sublio@rambler.ru', pass = 'avatar1260')
 
     welcomePage = WELCOME_PAGE.new(@driver)
     welcomePage.loginWithEmailButton.click
     loginPage = ENTER_EMAIL_PAGE.new(@driver)
-    loginPage.emailField.type UserDataDepot.arrayOfValidMailsPasswords[0]['mail']
+    loginPage.emailField.type mail
     sleep 2
     loginPage.nextButton.click
     passwordPage = ENTER_PASS_PAGE.new(@driver)
     sleep 2
-    passwordPage.passField.type UserDataDepot.arrayOfValidMailsPasswords[0]['password']
+    passwordPage.passField.type pass
 
     passwordPage.nextButton.click
 
