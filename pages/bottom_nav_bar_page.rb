@@ -23,7 +23,6 @@ class BOTTOM_NAV_BAR
       @driver.find_element(:name, 'Home')
 
     end
-
   end
 
   def bookmarksButton

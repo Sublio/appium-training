@@ -4,6 +4,7 @@
 *.DS_Store
 *.app
 *.apk
+appium.txt
 /.config
 /coverage/
 /InstalledFiles

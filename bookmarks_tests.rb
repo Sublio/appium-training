@@ -53,20 +53,24 @@ class BookmarksiOS < Test::Unit::TestCase
       lower_y = upper_y + cell.size.height
       middle_y = (upper_y + lower_y)/2
 
-      swipe start_x: middle_x, start_y: middle_y, end_x: 180, end_y:middle_y, duration: 1000
+      swipe start_x: middle_x, start_y: middle_y, end_x: 180, end_y: middle_y, duration: 1000
       sleep (5)
 
-      if !(@driver.device_is_android?)
+    end
 
-          @driver.find_element(:id, 'Bookmark').click #ios case
+    sleep 2
 
-      else
+    if !(@driver.device_is_android?)
 
-        text("Bookmark").click #android case
+      @driver.find_element(:id, 'Bookmark').click #ios case
 
-      end
+    else
+
+      text("Bookmark").click #android case
 
     end
+
+    checkBookmarkHasAdded
 
   end
 
@@ -92,6 +96,17 @@ class BookmarksiOS < Test::Unit::TestCase
     wait { homePage.searchButton.displayed? }
 
     homePage.enableNotificationsIfNeeded
+
+  end
+
+
+  def checkBookmarkHasAdded
+
+    bottomBar = BOTTOM_NAV_BAR.new(@driver)
+    bottomBar.bookmarksButton.click
+    bookmark_page = BOOKMARKS_PAGE.new(@driver)
+
+    assert(bookmark_page.bookmarks.count>0, "Bookmarks table is empty!!!")
 
   end
 
