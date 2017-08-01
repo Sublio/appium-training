@@ -40,7 +40,7 @@ class BookmarksiOS < Test::Unit::TestCase
   def testAddBookmark
 
     homepage = HOME.new(@driver)
-    cell = homepage.cellFromFeedTableByIndex(0)
+    cell = homepage.cellFromFeedTableByIndex(1)
 
     if !(@driver.device_is_android?)
       swipe(direction: "left", element: cell)
@@ -58,15 +58,29 @@ class BookmarksiOS < Test::Unit::TestCase
 
     end
 
-    sleep 2
+
+    sleep(5)
 
     if !(@driver.device_is_android?)
 
-      @driver.find_element(:id, 'Bookmark').click #ios case
+
+      @driver.find_element(:name, 'Bookmark').click
+
+=begin
+      if !(@driver.find_element(:name, 'Bookmark').value.nil?) # if has not already added into bookmark
+
+        @driver.find_element(:name, 'Bookmark').click #ios case
+
+      else
+
+        puts "This cell already in bookmarks"
+
+      end
+=end
 
     else
 
-      text("Bookmark").click #android case
+          text("Bookmark").click #android case
 
     end
 
