@@ -46,58 +46,7 @@ class BookmarksiOS < Test::Unit::TestCase
     cellContentPage.addToBookmarkButton.click
     cellContentPage.backButton.click
 
-
-    sleep(3)
-
-
-
-=begin
-
-    if !(@driver.device_is_android?)
-      swipe(direction: "left", element: cell)
-    else
-
-      left_x = cell.location.x
-      right_x = left_x + cell.size.width
-      middle_x = (left_x + right_x)/2
-      upper_y = cell.location.y
-      lower_y = upper_y + cell.size.height
-      middle_y = (upper_y + lower_y)/2
-
-      swipe start_x: middle_x, start_y: middle_y, end_x: 180, end_y: middle_y, duration: 1000
-      sleep (5)
-
-    end
-
-
-    sleep(10)
-
-    @driver.source
-
-    sleep(5)
-
-    if !(@driver.device_is_android?)
-
-
-      @driver.find_element(:name, 'Bookmark').click
-
-      if !(@driver.find_element(:name, 'Bookmark').value.nil?) # if has not already added into bookmark
-
-        @driver.find_element(:name, 'Bookmark').click #ios case
-
-      else
-
-        puts "This cell already in bookmarks"
-
-      end
-
-
-    else
-
-          text("Bookmark").click #android case
-
-    end
-=end
+    sleep 2
 
     checkBookmarkHasAdded
 
