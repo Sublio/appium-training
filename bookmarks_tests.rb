@@ -37,10 +37,21 @@ class BookmarksiOS < Test::Unit::TestCase
   end
 
 
-  def testAddBookmark
+  def testAddBookmarkFromInsideCell
 
     homepage = HOME.new(@driver)
     cell = homepage.cellFromFeedTableByIndex(1)
+    cell.click
+    cellContentPage = CELLCONTENT_PAGE.new(@driver)
+    cellContentPage.addToBookmarkButton.click
+    cellContentPage.backButton.click
+
+
+    sleep(3)
+
+
+
+=begin
 
     if !(@driver.device_is_android?)
       swipe(direction: "left", element: cell)
@@ -59,6 +70,10 @@ class BookmarksiOS < Test::Unit::TestCase
     end
 
 
+    sleep(10)
+
+    @driver.source
+
     sleep(5)
 
     if !(@driver.device_is_android?)
@@ -66,7 +81,6 @@ class BookmarksiOS < Test::Unit::TestCase
 
       @driver.find_element(:name, 'Bookmark').click
 
-=begin
       if !(@driver.find_element(:name, 'Bookmark').value.nil?) # if has not already added into bookmark
 
         @driver.find_element(:name, 'Bookmark').click #ios case
@@ -76,13 +90,14 @@ class BookmarksiOS < Test::Unit::TestCase
         puts "This cell already in bookmarks"
 
       end
-=end
+
 
     else
 
           text("Bookmark").click #android case
 
     end
+=end
 
     checkBookmarkHasAdded
 
@@ -118,9 +133,10 @@ class BookmarksiOS < Test::Unit::TestCase
 
     bottomBar = BOTTOM_NAV_BAR.new(@driver)
     bottomBar.bookmarksButton.click
+    sleep 2
     bookmark_page = BOOKMARKS_PAGE.new(@driver)
 
-    assert(bookmark_page.bookmarks.count>0, "Bookmarks table is empty!!!")
+    assert(bookmark_page.bookmarks.count > 0, "Bookmarks table is empty!!!")
 
   end
 
