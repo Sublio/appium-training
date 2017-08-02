@@ -1,20 +1,17 @@
-#user feed page
-
+# user feed page
 
 class HOME
-
   attr_accessor :driver
 
-  def initialize (driver)
+  def initialize(driver)
     @driver = driver
     Appium.promote_appium_methods self.class
   end
 
   def searchButton
-
     if @driver.device_is_android?
 
-      @driver.find_element(:xpath, "//android.widget.TextView[@content-desc=\"Search\"]")
+      @driver.find_element(:xpath, '//android.widget.TextView[@content-desc="Search"]')
 
     else
 
@@ -23,10 +20,7 @@ class HOME
     end
   end
 
-
   def cellFromFeedTableByIndex(index)
-
-
     if @driver.device_is_android?
       sleep 3
       cells = @driver.find_elements(:id, 'com.thetrustedinsight.tiapp:id/sml')
@@ -42,10 +36,8 @@ class HOME
     end
   end
 
-
   def enableNotificationsIfNeeded
-
-    if !@driver.device_is_android?
+    unless @driver.device_is_android?
 
       if buttons[0].label == 'ENABLE NOTIFICATIONS'
 
@@ -56,7 +48,5 @@ class HOME
       end
 
     end
-
   end
-
 end

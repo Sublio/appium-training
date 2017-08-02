@@ -1,15 +1,13 @@
-#enter pass page
+# enter pass page
 
 class ENTER_PASS_PAGE
-
   attr_accessor :driver
 
-  def initialize (driver)
+  def initialize(driver)
     @driver = driver
   end
 
   def passField
-
     @driver.textfields[0]
   end
 
@@ -25,8 +23,5 @@ class ENTER_PASS_PAGE
     end
   end
 
-  def forgotPassButton
-
-  end
-
+  def forgotPassButton; end
 end

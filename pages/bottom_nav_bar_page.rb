@@ -1,19 +1,15 @@
 
-#bottom navigation bar page class
+# bottom navigation bar page class
 
 class BOTTOM_NAV_BAR
-
   attr_accessor :driver
 
-  def initialize (driver)
+  def initialize(driver)
     @driver = driver
     Appium.promote_appium_methods self.class
-
   end
 
-
   def homeButton
-
     if @driver.device_is_android?
 
       driver.find_element(:id, 'com.thetrustedinsight.tiapp:id/bottomBarItemOne')
@@ -26,8 +22,6 @@ class BOTTOM_NAV_BAR
   end
 
   def bookmarksButton
-
-
     if @driver.device_is_android?
 
       driver.find_element(:id, 'com.thetrustedinsight.tiapp:id/bottomBarItemTwo')
@@ -37,12 +31,9 @@ class BOTTOM_NAV_BAR
       @driver.find_element(:name, 'Bookmarks')
 
     end
-
   end
 
   def contactsButton
-
-
     if @driver.device_is_android?
 
       driver.find_element(:id, 'com.thetrustedinsight.tiapp:id/bottomBarItemThree')
@@ -52,12 +43,9 @@ class BOTTOM_NAV_BAR
       @driver.find_element(:name, 'Contacts')
 
     end
-
   end
 
   def notificationsButton
-
-
     if @driver.device_is_android?
 
       driver.find_element(:id, 'com.thetrustedinsight.tiapp:id/bottomBarItemFour')
@@ -67,11 +55,9 @@ class BOTTOM_NAV_BAR
       @driver.find_element(:name, 'Notifications')
 
     end
-
   end
 
   def settingsButton
-
     if @driver.device_is_android?
 
       driver.find_element(:id, 'com.thetrustedinsight.tiapp:id/bottomBarItemFive')
@@ -81,7 +67,5 @@ class BOTTOM_NAV_BAR
       @driver.find_element(:name, 'Settings')
 
     end
-
   end
-
 end

@@ -8,22 +8,17 @@ require_relative 'user_data_depot'
 require_all 'pages'
 require_all 'Services'
 
-
-
 class LoginTestsIos < Test::Unit::TestCase
-
   attr_reader :driver
 
-  if ARGV.include? 'android'
+  @@platform = if ARGV.include? 'android'
 
-    @@platform = 'android'
-  else
-    @@platform = 'ios'
-  end
-
+                 'android'
+               else
+                 'ios'
+               end
 
   def setup
-
     if @@platform == 'android'
       caps = Appium.load_appium_txt file: File.join(Dir.pwd, 'caps/appiumAndroidCaps.txt')
     else
@@ -33,16 +28,13 @@ class LoginTestsIos < Test::Unit::TestCase
     @driver = Appium::Driver.new(caps)
     Appium.promote_appium_methods self.class
     @driver.start_driver
-
   end
-
 
   def teardown
     @driver.driver_quit
   end
 
   def testLoginWithMail(mail = 'sublio@rambler.ru', pass = 'avatar1260')
-
     welcomePage = WELCOME_PAGE.new(@driver)
     welcomePage.loginWithEmailButton.click
     loginPage = ENTER_EMAIL_PAGE.new(@driver)
@@ -60,17 +52,14 @@ class LoginTestsIos < Test::Unit::TestCase
     wait { homePage.searchButton.displayed? }
 
     homePage.enableNotificationsIfNeeded
-
   end
 
-
   def testLogoutFromCurrentAccount
-
     testLoginWithMail
 
     bottombar = BOTTOM_NAV_BAR.new(@driver)
 
-    wait { bottombar.settingsButton.displayed?}
+    wait { bottombar.settingsButton.displayed? }
     bottombar.settingsButton.click
 
     table = SETTINGS_PAGE.new(@driver).tableContainer
@@ -81,14 +70,12 @@ class LoginTestsIos < Test::Unit::TestCase
 
     else
 
-      scroll direction: "down", element:table
+      scroll direction: 'down', element: table
 
     end
 
-    text("Log out").click
+    text('Log out').click
 
     wait { text 'Welcome' }
-
   end
-
 end

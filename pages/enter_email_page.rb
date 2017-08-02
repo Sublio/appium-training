@@ -1,15 +1,13 @@
-#enter email on login page
+# enter email on login page
 
 class ENTER_EMAIL_PAGE
-
   attr_accessor :driver
 
-  def initialize (driver)
+  def initialize(driver)
     @driver = driver
   end
 
   def emailField
-
     @driver.textfields[0]
   end
 
@@ -24,5 +22,4 @@ class ENTER_EMAIL_PAGE
 
     end
   end
-
 end

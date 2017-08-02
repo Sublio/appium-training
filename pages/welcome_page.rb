@@ -1,15 +1,12 @@
 
 class WELCOME_PAGE
-
   attr_accessor :driver
 
-  def initialize (driver)
+  def initialize(driver)
     @driver = driver
   end
 
-
   def loginWithEmailButton
-
     if @driver.device_is_android?
 
       driver.find('ACCESS WITH EMAIL')
@@ -18,6 +15,5 @@ class WELCOME_PAGE
 
       driver.find_element(:name, 'ACCESS WITH EMAIL')
     end
-
   end
 end

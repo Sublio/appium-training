@@ -6,18 +6,16 @@ require_all 'pages'
 require_all 'Services'
 
 class BookmarksiOS < Test::Unit::TestCase
-
   attr_reader :driver
 
-  if ARGV.include? 'android'
+  @@platform = if ARGV.include? 'android'
 
-    @@platform = 'android'
-  else
-    @@platform = 'ios'
-  end
+                 'android'
+               else
+                 'ios'
+               end
 
   def setup
-
     if @@platform == 'android'
       caps = Appium.load_appium_txt file: File.join(Dir.pwd, 'caps/appiumAndroidCaps.txt')
     else
@@ -31,14 +29,11 @@ class BookmarksiOS < Test::Unit::TestCase
     loginWithMail
   end
 
-
   def teardown
     driver_quit
   end
 
-
   def testAddBookmarkFromInsideCell
-
     homepage = HOME.new(@driver)
     cell = homepage.cellFromFeedTableByIndex(1)
     cell.click
@@ -49,14 +44,11 @@ class BookmarksiOS < Test::Unit::TestCase
     sleep 2
 
     checkBookmarkHasAdded
-
   end
-
 
   private
 
   def loginWithMail(mail = 'sublio@rambler.ru', pass = 'avatar1260')
-
     welcomePage = WELCOME_PAGE.new(@driver)
     welcomePage.loginWithEmailButton.click
     loginPage = ENTER_EMAIL_PAGE.new(@driver)
@@ -74,19 +66,14 @@ class BookmarksiOS < Test::Unit::TestCase
     wait { homePage.searchButton.displayed? }
 
     homePage.enableNotificationsIfNeeded
-
   end
 
-
   def checkBookmarkHasAdded
-
     bottomBar = BOTTOM_NAV_BAR.new(@driver)
     bottomBar.bookmarksButton.click
     sleep 2
     bookmark_page = BOOKMARKS_PAGE.new(@driver)
 
-    assert(bookmark_page.bookmarks.count > 0, "Bookmarks table is empty!!!")
-
+    assert(bookmark_page.bookmarks.count > 0, 'Bookmarks table is empty!!!')
   end
-
 end
