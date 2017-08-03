@@ -2,6 +2,7 @@ require 'rubygems'
 require 'appium_lib'
 require 'test/unit'
 require 'require_all'
+require_relative 'login_tests'
 require_all 'pages'
 require_all 'Services'
 
@@ -26,7 +27,8 @@ class BookmarksiOS < Test::Unit::TestCase
     Appium.promote_appium_methods self.class
     @driver.start_driver
 
-    loginWithMail
+   loginWithMail
+
   end
 
   def teardown
@@ -46,8 +48,34 @@ class BookmarksiOS < Test::Unit::TestCase
     checkBookmarkHasAdded
   end
 
-  private
 
+
+  def testDeleteBookmark
+
+    bottombar = BOTTOM_NAV_BAR.new(@driver)
+
+    wait { bottombar.bookmarksButton.displayed? }
+    bottombar.bookmarksButton.click
+    bookmarksPage = BOOKMARKS_PAGE.new(@driver)
+    wait { bookmarksPage.table.displayed? }
+
+    if bookmarksPage.bookmarks.count > 0
+
+        bookmarksPage.bookmarks.first.click
+
+        content = CELLCONTENT_PAGE.new(@driver)
+        content.removeBookmarkButton.click
+        content.backButton.click
+        sleep 1
+    end
+
+    wait { bookmarksPage.noBookmarksLabel.displayed? }
+
+  end
+
+
+
+ private
   def loginWithMail(mail = 'sublio@rambler.ru', pass = 'avatar1260')
     welcomePage = WELCOME_PAGE.new(@driver)
     welcomePage.loginWithEmailButton.click
@@ -67,6 +95,7 @@ class BookmarksiOS < Test::Unit::TestCase
 
     homePage.enableNotificationsIfNeeded
   end
+
 
   def checkBookmarkHasAdded
     bottomBar = BOTTOM_NAV_BAR.new(@driver)

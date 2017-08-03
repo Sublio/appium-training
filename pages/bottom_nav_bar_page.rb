@@ -22,6 +22,8 @@ class BOTTOM_NAV_BAR
   end
 
   def bookmarksButton
+    sleep(1)
+
     if @driver.device_is_android?
 
       driver.find_element(:id, 'com.thetrustedinsight.tiapp:id/bottomBarItemTwo')

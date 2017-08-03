@@ -31,5 +31,21 @@ class CELLCONTENT_PAGE
     end
   end
 
+
+  def removeBookmarkButton
+
+    if @driver.device_is_android? # case android
+
+      wait { @driver.find_element(:id, 'com.thetrustedinsight.tiapp:id/op_bookmark') }
+
+    else # case ios
+
+      wait { @driver.find_element(:name, 'iconNavBookmarkFull') }
+
+    end
+
+
+  end
+
   def topNavigationBar; end
 end
