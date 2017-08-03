@@ -4,7 +4,7 @@ require 'test/unit'
 require 'require_all'
 require_relative 'login_tests'
 require_all 'pages'
-require_all 'Services'
+require_all 'services'
 
 class BookmarksiOS < Test::Unit::TestCase
   attr_reader :driver
@@ -72,6 +72,9 @@ class BookmarksiOS < Test::Unit::TestCase
     wait { bookmarksPage.noBookmarksLabel.displayed? }
 
   end
+
+
+  #def testBookmarkFilter: end
 
 
 

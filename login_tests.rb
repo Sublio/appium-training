@@ -6,7 +6,7 @@ require 'nokogiri'
 require 'require_all'
 require_relative 'user_data_depot'
 require_all 'pages'
-require_all 'Services'
+require_all 'services'
 
 class LoginTestsIos < Test::Unit::TestCase
   attr_reader :driver
