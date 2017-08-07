@@ -1,7 +1,7 @@
 task :default => :test_ios
 
 task :test_ios do
-  ruby "all_the_tests.rb", 'ios'
+  ruby 'all_the_tests.rb', 'ios'
 end
 
 task :test_android do
