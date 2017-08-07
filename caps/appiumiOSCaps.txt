@@ -3,7 +3,6 @@
     deviceName =  "iPhone 6"
     platformVersion =  "10.3"
     app = "app/TrustedInsight.app"
-    automationName = "Appium"
+    automationName = "XCUITest"
     language = "en"
-    autoAcceptAlerts = true
     fullReset = true
