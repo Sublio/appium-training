@@ -11,7 +11,7 @@ require_all 'services'
 class LoginTestsIos < Test::Unit::TestCase
   attr_reader :driver
 
-  @@platform = if ARGV.include? 'android'
+  @@platform = if ARGV.include?('android')
 
                  'android'
                else
@@ -79,3 +79,4 @@ class LoginTestsIos < Test::Unit::TestCase
     wait { text 'Welcome' }
   end
 end
+
