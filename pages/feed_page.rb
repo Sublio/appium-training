@@ -7,35 +7,35 @@ class FEED
   end
 
   def table
-    if @driver.device_is_android?
+    if device_is_android?
 
-      @driver.find_element(:id, 'com.thetrustedinsight.tiapp:id/recycler')
+      find_element(:id, 'com.thetrustedinsight.tiapp:id/recycler')
     else
 
-      @driver.find_element(:class_name, 'XCUIElementTypeTable')
+     find_element(:class_name, 'XCUIElementTypeTable')
 
     end
   end
 
   def cells
-    if @driver.device_is_android?
+    if device_is_android?
 
-        #TODO !!!
+      #TODO!!!
     else
 
-      @driver.find_elements(:class_name, 'XCUIElementTypeCell')
+      find_elements(:class_name, 'XCUIElementTypeCell')
 
     end
   end
 
   def searchButton
 
-    if @driver.device_is_android?
+    if device_is_android?
 
-      @driver.find_element(:id, 'com.thetrustedinsight.tiapp:id/op_search')
+      find_element(:id, 'com.thetrustedinsight.tiapp:id/op_search')
     else
 
-      @driver.find_elements(:id, 'iconNavSearch')
+      find_elements(:id, 'iconNavSearch')
 
     end
 
@@ -44,12 +44,12 @@ class FEED
 
   def navBarLabel
 
-    if @driver.device_is_android?
+    if device_is_android?
 
-      @driver.find_element(:id, 'com.thetrustedinsight.tiapp:id/toolbar').find_element(:class_name, 'android.widget.ImageView')
+      find_element(:id, 'com.thetrustedinsight.tiapp:id/toolbar').find_element(:class_name, 'android.widget.ImageView')
     else
 
-      @driver.find_elements(:id, 'imgTopLogoTxt')
+      find_elements(:id, 'imgTopLogoTxt')
 
     end
 
@@ -59,12 +59,12 @@ class FEED
 
   def newInsights
 
-    if @driver.device_is_android?
+    if device_is_android?
 
       #TODO Find locators for Android case
     else
 
-      @driver.find_elements(:id, 'New insights')
+      find_elements(:id, 'New insights')
 
     end
 

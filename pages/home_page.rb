@@ -9,35 +9,35 @@ class HOME
   end
 
   def searchButton
-    if @driver.device_is_android?
+    if device_is_android?
 
-      @driver.find_element(:xpath, '//android.widget.TextView[@content-desc="Search"]')
+       find_element(:xpath, '//android.widget.TextView[@content-desc="Search"]')
 
     else
 
-      @driver.find_element(:name, 'iconNavSearch')
+       find_element(:name, 'iconNavSearch')
 
     end
   end
 
   def cellFromFeedTableByIndex(index)
-    if @driver.device_is_android?
+    if device_is_android?
       sleep 3
-      cells = @driver.find_elements(:id, 'com.thetrustedinsight.tiapp:id/sml')
-      table = @driver.find_element(:id, 'com.thetrustedinsight.tiapp:id/recycler')
+      cells = find_elements(:id, 'com.thetrustedinsight.tiapp:id/sml')
+      table = find_element(:id, 'com.thetrustedinsight.tiapp:id/recycler')
       cells[index]
 
     else
       sleep(3)
-      cells = @driver.find_elements(:class_name, 'XCUIElementTypeCell')
-      table = @driver.find_element(:class_name, 'XCUIElementTypeTable')
+      cells = find_elements(:class_name, 'XCUIElementTypeCell')
+      table = find_element(:class_name, 'XCUIElementTypeTable')
       cells[index]
 
     end
   end
 
   def enableNotificationsIfNeeded
-    unless @driver.device_is_android?
+    unless device_is_android?
 
       if buttons[0].label == 'ENABLE NOTIFICATIONS'
 

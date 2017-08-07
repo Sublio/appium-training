@@ -37,7 +37,7 @@ class FeedTests < Test::Unit::TestCase
 
   def testReportFirstCellFromFeed
 
-    
+
 
 
   end

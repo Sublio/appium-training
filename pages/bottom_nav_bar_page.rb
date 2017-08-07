@@ -10,13 +10,13 @@ class BOTTOM_NAV_BAR
   end
 
   def homeButton
-    if @driver.device_is_android?
+    if device_is_android?
 
-      driver.find_element(:id, 'com.thetrustedinsight.tiapp:id/bottomBarItemOne')
+       find_element(:id, 'com.thetrustedinsight.tiapp:id/bottomBarItemOne')
 
     else
 
-      @driver.find_element(:name, 'Home')
+       find_element(:name, 'Home')
 
     end
   end
@@ -24,49 +24,49 @@ class BOTTOM_NAV_BAR
   def bookmarksButton
     sleep(1)
 
-    if @driver.device_is_android?
+    if device_is_android?
 
-      driver.find_element(:id, 'com.thetrustedinsight.tiapp:id/bottomBarItemTwo')
+       find_element(:id, 'com.thetrustedinsight.tiapp:id/bottomBarItemTwo')
 
     else
 
-      @driver.find_element(:name, 'Bookmarks')
+       find_element(:name, 'Bookmarks')
 
     end
   end
 
   def contactsButton
-    if @driver.device_is_android?
+    if device_is_android?
 
-      driver.find_element(:id, 'com.thetrustedinsight.tiapp:id/bottomBarItemThree')
+      find_element(:id, 'com.thetrustedinsight.tiapp:id/bottomBarItemThree')
 
     else
 
-      @driver.find_element(:name, 'Contacts')
+      find_element(:name, 'Contacts')
 
     end
   end
 
   def notificationsButton
-    if @driver.device_is_android?
+    if device_is_android?
 
-      driver.find_element(:id, 'com.thetrustedinsight.tiapp:id/bottomBarItemFour')
+       find_element(:id, 'com.thetrustedinsight.tiapp:id/bottomBarItemFour')
 
     else
 
-      @driver.find_element(:name, 'Notifications')
+       find_element(:name, 'Notifications')
 
     end
   end
 
   def settingsButton
-    if @driver.device_is_android?
+    if device_is_android?
 
-      driver.find_element(:id, 'com.thetrustedinsight.tiapp:id/bottomBarItemFive')
+       find_element(:id, 'com.thetrustedinsight.tiapp:id/bottomBarItemFive')
 
     else
 
-      @driver.find_element(:name, 'Settings')
+       find_element(:name, 'Settings')
 
     end
   end

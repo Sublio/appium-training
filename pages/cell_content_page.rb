@@ -8,25 +8,25 @@ class CELLCONTENT_PAGE
   end
 
   def backButton
-    if @driver.device_is_android?
+    if device_is_android?
 
-      @driver.find_element(:id, 'Navigate up')
+       find_element(:id, 'Navigate up')
 
     else
 
-      wait { @driver.find_element(:name, 'iconTopBack') }
+      wait { find_element(:name, 'iconTopBack') }
 
     end
   end
 
   def addToBookmarkButton
-    if @driver.device_is_android? # case android
+    if device_is_android? # case android
 
-      wait { @driver.find_element(:id, 'com.thetrustedinsight.tiapp:id/op_bookmark') }
+      wait { find_element(:id, 'com.thetrustedinsight.tiapp:id/op_bookmark') }
 
     else # case ios
 
-      wait { @driver.find_element(:name, 'iconNavBookmarkEmpty') }
+      wait { find_element(:name, 'iconNavBookmarkEmpty') }
 
     end
   end
@@ -34,13 +34,13 @@ class CELLCONTENT_PAGE
 
   def removeBookmarkButton
 
-    if @driver.device_is_android? # case android
+    if device_is_android? # case android
 
-      wait { @driver.find_element(:id, 'com.thetrustedinsight.tiapp:id/op_bookmark') }
+      wait { find_element(:id, 'com.thetrustedinsight.tiapp:id/op_bookmark') }
 
     else # case ios
 
-      wait { @driver.find_element(:name, 'iconNavBookmarkFull') }
+      wait { find_element(:name, 'iconNavBookmarkFull') }
 
     end
 

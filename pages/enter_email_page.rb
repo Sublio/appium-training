@@ -5,20 +5,21 @@ class ENTER_EMAIL_PAGE
 
   def initialize(driver)
     @driver = driver
+    Appium.promote_appium_methods self.class
   end
 
   def emailField
-    @driver.textfields[0]
+     textfields[0]
   end
 
   def nextButton
-    if @driver.device_is_android?
+    if device_is_android?
 
-      driver.find_element(:id, 'com.thetrustedinsight.tiapp:id/join_ab_next')
+       find_element(:id, 'com.thetrustedinsight.tiapp:id/join_ab_next')
 
     else
 
-      @driver.find_element(:name, 'NEXT')
+      find_element(:name, 'NEXT')
 
     end
   end

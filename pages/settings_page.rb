@@ -6,13 +6,13 @@ class SETTINGS_PAGE
   end
 
   def tableContainer
-    if @driver.device_is_android?
+    if device_is_android?
 
-      @driver.find_element(:id, 'com.thetrustedinsight.tiapp:id/settings_scroll_container')
+       find_element(:id, 'com.thetrustedinsight.tiapp:id/settings_scroll_container')
 
     else
 
-      @driver.find_element(:class_name, 'XCUIElementTypeTable')
+       find_element(:class_name, 'XCUIElementTypeTable')
 
     end
   end
