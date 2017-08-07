@@ -45,7 +45,7 @@ class FeedTests < Test::Unit::TestCase
 
     feed = FEED.new(@driver)
 
-    wait { feed.searchButton.displayed? }
+    wait { feed.searchButton }
 
     feed.swipeLeftOnCellByIndex(0)
 

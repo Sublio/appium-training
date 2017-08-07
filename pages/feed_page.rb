@@ -88,7 +88,7 @@ class FEED
     else
 
 
-      cell = find_element(:class_name, 'XCUIElementTypeTable').find_elements(:class_name, 'XCUIElementTypeCell')[index]
+      cell = find_element(:class_name, 'XCUIElementTypeTable').find_elements(:xpath, 'XCUIElementTypeCell')[index]
       swipe direction: 'left', :element => cell
 
 
