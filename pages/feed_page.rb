@@ -20,7 +20,7 @@ class FEED
   def cells
     if device_is_android?
 
-      #TODO!!!
+      find_element(:id, 'com.thetrustedinsight.tiapp:id/recycler').find_elements(:class_name, 'android.widget.RelativeLayout') #return only visible relative layouts
     else
 
       find_elements(:class_name, 'XCUIElementTypeCell')
@@ -35,7 +35,7 @@ class FEED
       find_element(:id, 'com.thetrustedinsight.tiapp:id/op_search')
     else
 
-      find_elements(:id, 'iconNavSearch')
+      find_element(:id, 'iconNavSearch')
 
     end
 
@@ -61,10 +61,62 @@ class FEED
 
     if device_is_android?
 
-      #TODO Find locators for Android case
+      texts('New Insights')
     else
 
       find_elements(:id, 'New insights')
+
+    end
+
+  end
+
+
+  def swipeLeftOnCellByIndex(index)
+
+    if device_is_android?
+
+
+      cell = find_element(:id, 'com.thetrustedinsight.tiapp:id/recycler').find_elements(:class_name, 'android.widget.RelativeLayout')[index]
+      leftX = cell.location.x
+      rightX = leftX + cell.size.width
+      middleX = (leftX + rightX) /2
+      upperY = cell.location.y
+      lowerY = upperY + cell.size.height
+      middleY = (upperY + lowerY) /2
+      swipe start_x: middleX, start_y: middleY, end_x: 100, end_y: middleY, duration: 200
+
+    else
+
+
+      cell = find_element(:class_name, 'XCUIElementTypeTable').find_elements(:class_name, 'XCUIElementTypeCell')[index]
+      swipe direction: 'left', :element => cell
+
+
+    end
+
+  end
+
+
+  def swipeRightOnCellByIndex(index)
+
+    if device_is_android?
+
+      wait { find_element(:id, 'com.thetrustedinsight.tiapp:id/op_search') }
+
+      cell = find_element(:id, 'com.thetrustedinsight.tiapp:id/recycler').find_elements(:class_name, 'android.widget.RelativeLayout')[index]
+      leftX = cell.location.x
+      rightX = leftX + cell.size.width
+      middleX = (leftX + rightX) /2
+      upperY = cell.location.y
+      lowerY = upperY + cell.size.height
+      middleY = (upperY + lowerY) /2
+      swipe start_x: middleX, start_y: middleY, end_x: 550, end_y: middleY, duration: 200
+
+    else
+
+      cell = find_element(:class_name, 'XCUIElementTypeTable').find_elements(:class_name, 'XCUIElementTypeCell')[index]
+      swipe direction: 'right', :element => cell
+
 
     end
 

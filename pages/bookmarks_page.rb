@@ -76,6 +76,6 @@ class BOOKMARKS_PAGE
 
     end
 
-
   end
+
 end
