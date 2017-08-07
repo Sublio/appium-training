@@ -1,10 +1,10 @@
 [caps]
     platformName = "iOS"
     deviceName =  "iPhone 6"
-    platformVersion =  "9.3"
+    platformVersion =  "10.3"
     app = "app/TrustedInsight.app"
     automationName = "XCUITest"
     language = "en"
-    autoAcceptAlerts = 'true'
-    fullReset = 'true'
+    autoAcceptAlerts = true
+    fullReset = true
 
