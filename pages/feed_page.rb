@@ -71,6 +71,37 @@ class FEED
   end
 
 
+  def pullToRefresh
+
+
+    if device_is_android?
+
+      table = find_element(:class_name, 'android.support.v7.widget.RecyclerView')
+      leftX = table.location.x
+      rightX = leftX + table.size.width
+      middleX = (leftX + rightX) /2
+      upperY = table.location.y
+      lowerY = upperY + table.size.height
+      middleY = (upperY + lowerY) /2
+
+      begin
+
+      swipe start_x: middleX, start_y: middleY-200, end_x: middleX, end_y: lowerY-100, duration: 400
+
+      rescue
+        puts "There is some strange error during swiping on Android. But gesture works well"
+      end
+
+
+    else
+
+      table = find_element(:class_name, 'XCUIElementTypeTable')
+      swipe direction: 'down', :element => table
+
+    end
+  end
+
+
   def swipeLeftOnCellByIndex(index)
 
     if device_is_android?

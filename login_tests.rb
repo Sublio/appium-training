@@ -19,6 +19,8 @@ class LoginTestsIos < Test::Unit::TestCase
                end
 
   def setup
+
+    puts 'login tests'
     if @@platform == 'android'
       caps = Appium.load_appium_txt file: File.join(Dir.pwd, 'caps/appiumAndroidCaps.txt')
     else

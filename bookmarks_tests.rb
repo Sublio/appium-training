@@ -17,6 +17,7 @@ class BookmarksiOS < Test::Unit::TestCase
                end
 
   def setup
+    puts 'bookmarks test'
     if @@platform == 'android'
       caps = Appium.load_appium_txt file: File.join(Dir.pwd, 'caps/appiumAndroidCaps.txt')
     else
@@ -32,7 +33,7 @@ class BookmarksiOS < Test::Unit::TestCase
   end
 
   def teardown
-    driver_quit
+    @driver_quit
   end
 
   def testAddBookmarkFromInsideCell
@@ -79,16 +80,21 @@ class BookmarksiOS < Test::Unit::TestCase
 
 
  private
+
   def loginWithMail(mail = 'sublio@rambler.ru', pass = 'avatar1260')
     welcomePage = WELCOME_PAGE.new(@driver)
     welcomePage.loginWithEmailButton.click
     loginPage = ENTER_EMAIL_PAGE.new(@driver)
     loginPage.emailField.type mail
-    sleep 2
+    wait { loginPage.nextButton }
     loginPage.nextButton.click
     passwordPage = ENTER_PASS_PAGE.new(@driver)
+
     sleep 2
+
     passwordPage.passField.type pass
+
+    wait { passwordPage.nextButton }
 
     passwordPage.nextButton.click
 

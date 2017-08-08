@@ -20,6 +20,7 @@ class FeedTests < Test::Unit::TestCase
                end
 
   def setup
+    puts 'feed_tests'
     if @@platform == 'android'
       caps = Appium.load_appium_txt file: File.join(Dir.pwd, 'caps/appiumAndroidCaps.txt')
     else
@@ -45,13 +46,16 @@ class FeedTests < Test::Unit::TestCase
 
     feed = FEED.new(@driver)
 
-    wait { feed.searchButton }
+    wait { feed.searchButton.displayed? }
 
     feed.swipeLeftOnCellByIndex(0)
+    feed.pullToRefresh
+    feed.swipeLeftOnCellByIndex(0)
+    button('Bookmark').click
+
 
 
   end
-
 
 
   private
@@ -60,11 +64,13 @@ class FeedTests < Test::Unit::TestCase
     welcomePage.loginWithEmailButton.click
     loginPage = ENTER_EMAIL_PAGE.new(@driver)
     loginPage.emailField.type mail
-    sleep 2
+    wait { loginPage.nextButton }
     loginPage.nextButton.click
     passwordPage = ENTER_PASS_PAGE.new(@driver)
-    sleep 2
+
     passwordPage.passField.type pass
+
+    wait { passwordPage.nextButton }
 
     passwordPage.nextButton.click
 
