@@ -71,6 +71,93 @@ class FEED
   end
 
 
+
+  def reportButton
+
+    if device_is_android?
+
+      find_element(:id, 'com.thetrustedinsight.tiapp:id/report_btn')
+    else
+
+      find_elements(:id, 'Report')
+
+    end
+
+  end
+
+  def downVoteButton
+
+    if device_is_android?
+
+      find_element(:id, 'com.thetrustedinsight.tiapp:id/downvote_btn')
+    else
+
+      find_elements(:id, 'Downvote')
+
+    end
+
+  end
+
+
+  def moreButton
+
+
+    if device_is_android?
+
+      find_element(:id, 'com.thetrustedinsight.tiapp:id/more_btn')
+    else
+
+      find_elements(:id, 'More')
+
+    end
+
+  end
+
+
+  def shareButton
+
+
+    if device_is_android?
+
+      find_element(:id, 'com.thetrustedinsight.tiapp:id/share_btn')
+    else
+
+      find_elements(:id, 'Share')
+
+    end
+
+  end
+
+
+  def discussButton
+
+    if device_is_android?
+
+      find_element(:id, 'com.thetrustedinsight.tiapp:id/discuss_btn')
+    else
+
+      find_elements(:id, 'Discuss')
+
+    end
+
+
+  end
+
+
+  def bookmarkButton
+
+    if device_is_android?
+
+      find_element(:id, 'com.thetrustedinsight.tiapp:id/bookmark_btn')
+    else
+
+      find_elements(:id, 'Bookmark')
+
+    end
+
+  end
+
+
   def pullToRefresh
 
 
