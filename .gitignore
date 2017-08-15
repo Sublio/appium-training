@@ -15,6 +15,7 @@ appium.txt
 /test/version_tmp/
 /tmp/
 /app/
+user_data_depot.rb
 
 # Used by dotenv library to load environment variables.
 # .env
