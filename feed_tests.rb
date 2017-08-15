@@ -32,7 +32,8 @@ class FeedTests < Test::Unit::TestCase
     @driver.start_driver
 
     loginWithMail
-  end  def teardown
+  end
+  def teardown
     @driver.driver_quit
   end
   def testReportFirstCellFromFeed

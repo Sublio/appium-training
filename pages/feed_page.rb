@@ -38,7 +38,9 @@ class FEED
 
     end
 
-  end  def navBarLabel
+  end
+
+  def navBarLabel
     if device_is_android?
 
       find_element(:id, 'com.thetrustedinsight.tiapp:id/toolbar').find_element(:class_name, 'android.widget.ImageView')
@@ -69,7 +71,8 @@ class FEED
       find_elements(:id, 'New insights')
 
     end
-  end  def reportButton
+  end
+  def reportButton
     if device_is_android?
 
       find_element(:id, 'com.thetrustedinsight.tiapp:id/report_btn')

@@ -1,6 +1,6 @@
 [caps]
     platformName = "iOS"
-    deviceName =  "iPhone 5"
+    deviceName =  "iPhone 7 Plus"
     platformVersion =  "10.3"
     app = "app/TrustedInsight.app"
     automationName = "XCUITest"

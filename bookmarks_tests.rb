@@ -46,7 +46,8 @@ class BookmarksiOS < Test::Unit::TestCase
     sleep 2
 
     checkBookmarkHasAdded
-  end  def testDeleteBookmark
+  end
+  def testDeleteBookmark
     bottombar = BOTTOM_NAV_BAR.new(@driver)
 
     wait { bottombar.bookmarksButton.displayed? }
