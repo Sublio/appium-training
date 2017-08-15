@@ -52,8 +52,11 @@ class FeedTests < Test::Unit::TestCase
       feed.reportButton.click
     else
 
-      action = Appium::TouchAction.new.tap(x: 39, y: 99)
+      action = Appium::TouchAction.new.tap(x: 39, y: 99) #this is a hankey, need to workaround for that
       action.perform
+
+      reportPage = REPORT_PAGE.new (@driver)
+      expect(reportPage.reportStaticText).to be_displayed
     end
   end
 end

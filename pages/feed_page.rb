@@ -55,7 +55,7 @@ class FEED
   def topSystemBar
     if device_is_android?
 
-      # TODO: find locator for system bar on Android
+      continue
     else
 
       find_element(:class_name, 'XCUIElementTypeStatusBar')
@@ -198,10 +198,21 @@ class FEED
 
     end
   end
+
   def scrollTableDown
     if device_is_android?
 
-      # TODO
+      table = find_element(:id, 'com.thetrustedinsight.tiapp:id/recycler')
+
+      leftX = table.location.x
+      rightX = leftX + table.size.width
+      middleX = (leftX + rightX) / 2
+      upperY = table.location.y
+      lowerY = upperY + table.size.height
+      middleY = (upperY + lowerY) / 2
+
+      swipe start_x: middleX, start_y: middleY, end_x: middleX, end_y: 150, duration: 200
+
 
     else
 
