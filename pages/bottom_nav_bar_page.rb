@@ -12,11 +12,11 @@ class BOTTOM_NAV_BAR
   def homeButton
     if device_is_android?
 
-       find_element(:id, 'com.thetrustedinsight.tiapp:id/bottomBarItemOne')
+      find_element(:id, 'com.thetrustedinsight.tiapp:id/bottomBarItemOne')
 
     else
 
-       find_element(:name, 'Home')
+      find_element(:name, 'Home')
 
     end
   end
@@ -26,11 +26,11 @@ class BOTTOM_NAV_BAR
 
     if device_is_android?
 
-       find_element(:id, 'com.thetrustedinsight.tiapp:id/bottomBarItemTwo')
+      find_element(:id, 'com.thetrustedinsight.tiapp:id/bottomBarItemTwo')
 
     else
 
-       find_element(:name, 'Bookmarks')
+      find_element(:name, 'Bookmarks')
 
     end
   end
@@ -50,11 +50,11 @@ class BOTTOM_NAV_BAR
   def notificationsButton
     if device_is_android?
 
-       find_element(:id, 'com.thetrustedinsight.tiapp:id/bottomBarItemFour')
+      find_element(:id, 'com.thetrustedinsight.tiapp:id/bottomBarItemFour')
 
     else
 
-       find_element(:name, 'Notifications')
+      find_element(:name, 'Notifications')
 
     end
   end
@@ -62,11 +62,11 @@ class BOTTOM_NAV_BAR
   def settingsButton
     if device_is_android?
 
-       find_element(:id, 'com.thetrustedinsight.tiapp:id/bottomBarItemFive')
+      find_element(:id, 'com.thetrustedinsight.tiapp:id/bottomBarItemFive')
 
     else
 
-       find_element(:name, 'Settings')
+      find_element(:name, 'Settings')
 
     end
   end

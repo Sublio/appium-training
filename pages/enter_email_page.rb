@@ -9,13 +9,13 @@ class ENTER_EMAIL_PAGE
   end
 
   def emailField
-     textfields[0]
+    textfields[0]
   end
 
   def nextButton
     if device_is_android?
 
-       find_element(:id, 'com.thetrustedinsight.tiapp:id/join_ab_next')
+      find_element(:id, 'com.thetrustedinsight.tiapp:id/join_ab_next')
 
     else
 

@@ -32,33 +32,29 @@ class FeedTests < Test::Unit::TestCase
     @driver.start_driver
 
     loginWithMail
-
-  end
-
-
-
-  def teardown
+  end  def teardown
     @driver.driver_quit
   end
-
-
-  def testReportFirstCellFromFeed()
-
+  def testReportFirstCellFromFeed
     feed = FEED.new(@driver)
 
     wait { feed.searchButton.displayed? }
 
-    feed.swipeLeftOnCellByIndex(0)
-    feed.pullToRefresh
-    feed.swipeLeftOnCellByIndex(0)
-    button('Bookmark').click
+    feed.swipeRightOnCellByIndex 0 # only first cell from feed for now :()
 
+    if device_is_android?
 
+      feed.reportButton.click
+    else
 
+      action = Appium::TouchAction.new.tap(x: 39, y: 99)
+      action.perform
+
+    end
   end
 
-
   private
+
   def loginWithMail(mail = 'sublio@rambler.ru', pass = 'avatar1260')
     welcomePage = WELCOME_PAGE.new(@driver)
     welcomePage.loginWithEmailButton.click
@@ -80,6 +76,5 @@ class FeedTests < Test::Unit::TestCase
 
     homePage.enableNotificationsIfNeeded
   end
-
 
 end

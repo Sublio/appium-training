@@ -10,7 +10,7 @@ class BOOKMARKS_PAGE
   def bookmarks
     if device_is_android?
 
-      find_element(:id, 'com.thetrustedinsight.tiapp:id/bookmarks_container').find_elements(:class_name, 'android.widget.RelativeLayout') #return only visible relative layouts
+      find_element(:id, 'com.thetrustedinsight.tiapp:id/bookmarks_container').find_elements(:class_name, 'android.widget.RelativeLayout') # return only visible relative layouts
 
     else
 
@@ -20,10 +20,9 @@ class BOOKMARKS_PAGE
   end
 
   def bookmarksTypes
-
     if device_is_android?
 
-      find_element(:id, 'com.thetrustedinsight.tiapp:id/bookmarks_filters_container').find_elements(:class_name, 'android.widget.RelativeLayout') #return only visible relative layouts
+      find_element(:id, 'com.thetrustedinsight.tiapp:id/bookmarks_filters_container').find_elements(:class_name, 'android.widget.RelativeLayout') # return only visible relative layouts
 
     else
 
@@ -32,8 +31,6 @@ class BOOKMARKS_PAGE
       find_elements(:class_name, 'XCUIElementTypeSheet').find_elements(:class_name, 'XCUIElementTypeButton')
 
     end
-
-
   end
 
   def table
@@ -51,7 +48,6 @@ class BOOKMARKS_PAGE
   def bookmarksFilterContainer
     if device_is_android?
 
-
       find_element(:id, 'com.thetrustedinsight.tiapp:id/bookmarks_filters_container')
 
     else
@@ -64,8 +60,6 @@ class BOOKMARKS_PAGE
   end
 
   def noBookmarksLabel
-
-
     if device_is_android?
 
       text('No bookmarks added yet')
@@ -75,7 +69,5 @@ class BOOKMARKS_PAGE
       find_element(:id, 'No bookmarks added yet')
 
     end
-
   end
-
 end

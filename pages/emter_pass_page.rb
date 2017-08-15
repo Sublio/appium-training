@@ -15,11 +15,11 @@ class ENTER_PASS_PAGE
   def nextButton
     if device_is_android?
 
-       find_element(:id, 'com.thetrustedinsight.tiapp:id/join_ab_next')
+      find_element(:id, 'com.thetrustedinsight.tiapp:id/join_ab_next')
 
     else
 
-       find_element(:name, 'LOG IN')
+      find_element(:name, 'LOG IN')
 
     end
   end

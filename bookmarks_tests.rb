@@ -28,8 +28,7 @@ class BookmarksiOS < Test::Unit::TestCase
     Appium.promote_appium_methods self.class
     @driver.start_driver
 
-   loginWithMail
-
+    loginWithMail
   end
 
   def teardown
@@ -47,12 +46,7 @@ class BookmarksiOS < Test::Unit::TestCase
     sleep 2
 
     checkBookmarkHasAdded
-  end
-
-
-
-  def testDeleteBookmark
-
+  end  def testDeleteBookmark
     bottombar = BOTTOM_NAV_BAR.new(@driver)
 
     wait { bottombar.bookmarksButton.displayed? }
@@ -62,7 +56,7 @@ class BookmarksiOS < Test::Unit::TestCase
 
     if bookmarksPage.bookmarks.count > 0
 
-        bookmarksPage.bookmarks.first.click
+      bookmarksPage.bookmarks.first.click
 
         content = CELLCONTENT_PAGE.new(@driver)
         content.removeBookmarkButton.click
@@ -71,15 +65,11 @@ class BookmarksiOS < Test::Unit::TestCase
     end
 
     wait { bookmarksPage.noBookmarksLabel.displayed? }
-
   end
 
+ # def testBookmarkFilter: end
 
-  #def testBookmarkFilter: end
-
-
-
- private
+  private
 
   def loginWithMail(mail = 'sublio@rambler.ru', pass = 'avatar1260')
     welcomePage = WELCOME_PAGE.new(@driver)
@@ -104,8 +94,6 @@ class BookmarksiOS < Test::Unit::TestCase
 
     homePage.enableNotificationsIfNeeded
   end
-
-
   def checkBookmarkHasAdded
     bottomBar = BOTTOM_NAV_BAR.new(@driver)
     bottomBar.bookmarksButton.click

@@ -11,11 +11,11 @@ class HOME
   def searchButton
     if device_is_android?
 
-       find_element(:xpath, '//android.widget.TextView[@content-desc="Search"]')
+      find_element(:xpath, '//android.widget.TextView[@content-desc="Search"]')
 
     else
 
-       find_element(:name, 'iconNavSearch')
+      find_element(:name, 'iconNavSearch')
 
     end
   end

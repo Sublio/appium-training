@@ -10,7 +10,7 @@ class CELLCONTENT_PAGE
   def backButton
     if device_is_android?
 
-       find_element(:id, 'Navigate up')
+      find_element(:id, 'Navigate up')
 
     else
 
@@ -31,9 +31,7 @@ class CELLCONTENT_PAGE
     end
   end
 
-
   def removeBookmarkButton
-
     if device_is_android? # case android
 
       wait { find_element(:id, 'com.thetrustedinsight.tiapp:id/op_bookmark') }
@@ -43,8 +41,6 @@ class CELLCONTENT_PAGE
       wait { find_element(:name, 'iconNavBookmarkFull') }
 
     end
-
-
   end
 
   def topNavigationBar; end

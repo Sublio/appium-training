@@ -12,7 +12,7 @@ class FEED
       find_element(:id, 'com.thetrustedinsight.tiapp:id/recycler')
     else
 
-     find_element(:class_name, 'XCUIElementTypeTable')
+      find_element(:class_name, 'XCUIElementTypeTable')
 
     end
   end
@@ -20,7 +20,7 @@ class FEED
   def cells
     if device_is_android?
 
-      find_element(:id, 'com.thetrustedinsight.tiapp:id/recycler').find_elements(:class_name, 'android.widget.RelativeLayout') #return only visible relative layouts
+      find_element(:id, 'com.thetrustedinsight.tiapp:id/recycler').find_elements(:class_name, 'android.widget.RelativeLayout') # return only visible relative layouts
     else
 
       find_elements(:class_name, 'XCUIElementTypeCell')
@@ -29,7 +29,6 @@ class FEED
   end
 
   def searchButton
-
     if device_is_android?
 
       find_element(:id, 'com.thetrustedinsight.tiapp:id/op_search')
@@ -39,11 +38,7 @@ class FEED
 
     end
 
-
-  end
-
-  def navBarLabel
-
+  end  def navBarLabel
     if device_is_android?
 
       find_element(:id, 'com.thetrustedinsight.tiapp:id/toolbar').find_element(:class_name, 'android.widget.ImageView')
@@ -53,12 +48,19 @@ class FEED
 
     end
 
-
   end
 
+  def topSystemBar
+    if device_is_android?
 
+      # TODO: find locator for system bar on Android
+    else
+
+      find_element(:class_name, 'XCUIElementTypeStatusBar')
+
+    end
+  end
   def newInsights
-
     if device_is_android?
 
       texts('New Insights')
@@ -67,156 +69,112 @@ class FEED
       find_elements(:id, 'New insights')
 
     end
-
-  end
-
-
-
-  def reportButton
-
+  end  def reportButton
     if device_is_android?
 
       find_element(:id, 'com.thetrustedinsight.tiapp:id/report_btn')
     else
 
-      find_elements(:id, 'Report')
+      find_element(:id, 'Report')
 
     end
-
   end
 
   def downVoteButton
-
     if device_is_android?
 
       find_element(:id, 'com.thetrustedinsight.tiapp:id/downvote_btn')
     else
 
-      find_elements(:id, 'Downvote')
+      find_element(:id, 'Downvote')
 
     end
-
   end
-
-
   def moreButton
-
-
     if device_is_android?
 
       find_element(:id, 'com.thetrustedinsight.tiapp:id/more_btn')
     else
 
-      find_elements(:id, 'More')
+      find_element(:id, 'More')
 
     end
-
   end
-
-
   def shareButton
-
-
     if device_is_android?
 
       find_element(:id, 'com.thetrustedinsight.tiapp:id/share_btn')
     else
 
-      find_elements(:id, 'Share')
+      find_element(:id, 'Share')
 
     end
-
   end
-
-
   def discussButton
-
     if device_is_android?
 
       find_element(:id, 'com.thetrustedinsight.tiapp:id/discuss_btn')
     else
 
-      find_elements(:id, 'Discuss')
+      find_element(:id, 'Discuss')
 
     end
 
-
   end
-
-
   def bookmarkButton
-
     if device_is_android?
 
       find_element(:id, 'com.thetrustedinsight.tiapp:id/bookmark_btn')
     else
 
-      find_elements(:id, 'Bookmark')
+      find_element(:id, 'Bookmark')
 
     end
-
   end
-
-
   def pullToRefresh
-
-
     if device_is_android?
 
       table = find_element(:class_name, 'android.support.v7.widget.RecyclerView')
       leftX = table.location.x
       rightX = leftX + table.size.width
-      middleX = (leftX + rightX) /2
+      middleX = (leftX + rightX) / 2
       upperY = table.location.y
       lowerY = upperY + table.size.height
-      middleY = (upperY + lowerY) /2
+      middleY = (upperY + lowerY) / 2
 
       begin
-
-      swipe start_x: middleX, start_y: middleY-200, end_x: middleX, end_y: lowerY-100, duration: 400
-
-      rescue
-        puts "There is some strange error during swiping on Android. But gesture works well"
+        swipe start_x: middleX, start_y: middleY - 200, end_x: middleX, end_y: lowerY - 100, duration: 400
+          rescue
+          puts 'There is some strange error during swiping on Android. But gesture works well'
       end
-
 
     else
 
       table = find_element(:class_name, 'XCUIElementTypeTable')
-      swipe direction: 'down', :element => table
+      swipe direction: 'down', element: table
 
     end
   end
-
-
   def swipeLeftOnCellByIndex(index)
-
     if device_is_android?
-
 
       cell = find_element(:id, 'com.thetrustedinsight.tiapp:id/recycler').find_elements(:class_name, 'android.widget.RelativeLayout')[index]
       leftX = cell.location.x
       rightX = leftX + cell.size.width
-      middleX = (leftX + rightX) /2
+      middleX = (leftX + rightX) / 2
       upperY = cell.location.y
       lowerY = upperY + cell.size.height
-      middleY = (upperY + lowerY) /2
+      middleY = (upperY + lowerY) / 2
       swipe start_x: middleX, start_y: middleY, end_x: 100, end_y: middleY, duration: 200
 
     else
 
-
       cell = find_element(:class_name, 'XCUIElementTypeTable').find_elements(:xpath, 'XCUIElementTypeCell')[index]
-      swipe direction: 'left', :element => cell
-
+      swipe direction: 'left', element: cell
 
     end
-
   end
-
-
   def swipeRightOnCellByIndex(index)
-
     if device_is_android?
 
       wait { find_element(:id, 'com.thetrustedinsight.tiapp:id/op_search') }
@@ -224,21 +182,30 @@ class FEED
       cell = find_element(:id, 'com.thetrustedinsight.tiapp:id/recycler').find_elements(:class_name, 'android.widget.RelativeLayout')[index]
       leftX = cell.location.x
       rightX = leftX + cell.size.width
-      middleX = (leftX + rightX) /2
+      middleX = (leftX + rightX) / 2
       upperY = cell.location.y
       lowerY = upperY + cell.size.height
-      middleY = (upperY + lowerY) /2
+      middleY = (upperY + lowerY) / 2
       swipe start_x: middleX, start_y: middleY, end_x: 550, end_y: middleY, duration: 200
 
     else
 
-      cell = find_element(:class_name, 'XCUIElementTypeTable').find_elements(:class_name, 'XCUIElementTypeCell')[index]
-      swipe direction: 'right', :element => cell
-
+      cell = find_element(:class_name, 'XCUIElementTypeTable').find_elements(:xpath, 'XCUIElementTypeCell')[index]
+      swipe direction: 'right', element: cell
 
     end
-
   end
+  def scrollTableDown
+    if device_is_android?
 
+      # TODO
+
+    else
+
+      table = find_element(:class_name, 'XCUIElementTypeTable')
+      swipe direction: 'up', element: table
+
+    end
+  end
 
 end
