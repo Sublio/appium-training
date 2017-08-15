@@ -36,19 +36,19 @@ class LoginTestsIos < Test::Unit::TestCase
   end
 
   def testLoginWithMail(mail = 'sublio@rambler.ru', pass = 'avatar1260')
-    welcomePage = WELCOME_PAGE.new(@driver)
+    welcomePage = WELCOME_PAGE.new(driver)
     welcomePage.loginWithEmailButton.click
-    loginPage = ENTER_EMAIL_PAGE.new(@driver)
+    loginPage = ENTER_EMAIL_PAGE.new(driver)
     loginPage.emailField.type mail
     sleep 2
     loginPage.nextButton.click
-    passwordPage = ENTER_PASS_PAGE.new(@driver)
+    passwordPage = ENTER_PASS_PAGE.new(driver)
     sleep 2
     passwordPage.passField.type pass
 
     passwordPage.nextButton.click
 
-    homePage = HOME.new(@driver)
+    homePage = HOME.new(driver)
 
     wait { homePage.searchButton.displayed? }
 
@@ -78,5 +78,30 @@ class LoginTestsIos < Test::Unit::TestCase
     text('Log out').click
 
     wait { text 'Welcome' }
+  end
+
+
+  ############## Shared methods section ##########################
+
+  def loginWithMail(mail = 'sublio@rambler.ru', pass = 'avatar1260')
+    welcomePage = WELCOME_PAGE.new(@driver)
+    welcomePage.loginWithEmailButton.click
+    loginPage = ENTER_EMAIL_PAGE.new(@driver)
+    loginPage.emailField.type mail
+    sleep 3
+    loginPage.nextButton.click
+    passwordPage = ENTER_PASS_PAGE.new(@driver)
+
+    passwordPage.passField.type pass
+
+    sleep 3
+
+    passwordPage.nextButton.click
+
+    homePage = HOME.new(@driver)
+
+    sleep 3
+
+    homePage.enableNotificationsIfNeeded
   end
 end

@@ -4,6 +4,7 @@ require 'test/unit'
 require 'rest-client'
 require 'nokogiri'
 require 'require_all'
+require 'rspec-expectations'
 require_relative 'user_data_depot'
 require_relative 'login_tests'
 require_all 'pages'
@@ -31,17 +32,20 @@ class FeedTests < Test::Unit::TestCase
     Appium.promote_appium_methods self.class
     @driver.start_driver
 
-    loginWithMail
+    login = LoginTestsIos.new(@driver)
+    login.loginWithMail
   end
+
   def teardown
     @driver.driver_quit
   end
+
   def testReportFirstCellFromFeed
     feed = FEED.new(@driver)
 
     wait { feed.searchButton.displayed? }
 
-    feed.swipeRightOnCellByIndex 0 # only first cell from feed for now :()
+    feed.swipeRightOnCellByIndex 0 #unfortunately only first cell from feed for now :()
 
     if device_is_android?
 
@@ -50,32 +54,6 @@ class FeedTests < Test::Unit::TestCase
 
       action = Appium::TouchAction.new.tap(x: 39, y: 99)
       action.perform
-
     end
   end
-
-  private
-
-  def loginWithMail(mail = 'sublio@rambler.ru', pass = 'avatar1260')
-    welcomePage = WELCOME_PAGE.new(@driver)
-    welcomePage.loginWithEmailButton.click
-    loginPage = ENTER_EMAIL_PAGE.new(@driver)
-    loginPage.emailField.type mail
-    wait { loginPage.nextButton }
-    loginPage.nextButton.click
-    passwordPage = ENTER_PASS_PAGE.new(@driver)
-
-    passwordPage.passField.type pass
-
-    wait { passwordPage.nextButton }
-
-    passwordPage.nextButton.click
-
-    homePage = HOME.new(@driver)
-
-    wait { homePage.searchButton.displayed? }
-
-    homePage.enableNotificationsIfNeeded
-  end
-
 end
