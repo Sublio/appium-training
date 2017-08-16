@@ -1,3 +1,5 @@
+require 'parallel_tests'
+
 task default: :test_ios
 
 task :test_ios do
@@ -11,8 +13,8 @@ task :test_android do
 end
 
 task :test_android_parallel do
-  puts "\n++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
-  puts "++++++++++++++++++ Running tests in Parallel ++++++++++++++++++"
-  puts "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n"
-  ParallelTests::CLI.new.run(["--type", "test"] + ["-n","5"] + Dir["Tests/all_the_testsls.rb"])
+  # appium -p 4492 -bp 2252 -U 192.168.56.101:5555
+  # appium -p 4491 -bp 2251 -U 192.168.56.102:5555
+  ruby 'Tests/all_the_tests.rb', 'android1'
+  ruby 'Tests/all_the_tests.rb', 'android2'
 end
