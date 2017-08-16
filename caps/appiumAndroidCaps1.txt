@@ -1,0 +1,13 @@
+[caps]
+    Name = "Android"
+    bootstrapPort = 2251
+    deviceName =  "Android"
+    platformName = 'Android'
+    app = 'app/TrustedInsight.apk'
+    autoAcceptAlerts = 'true'
+    fullReset = 'true'
+    udid = "192.168.56.101:5555"
+
+
+[appium_lib]
+	port = 4491

@@ -5,4 +5,3 @@
     app = 'app/TrustedInsight.apk'
     autoAcceptAlerts = 'true'
     fullReset = 'true'
-
