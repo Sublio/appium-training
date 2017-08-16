@@ -2,7 +2,7 @@
 
 require 'test/unit'
 
-require_relative 'login_tests.rb'
+require_relative 'login_tests'
 require_relative 'bookmarks_tests'
 require_relative 'feed_tests'
 

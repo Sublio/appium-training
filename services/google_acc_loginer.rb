@@ -1,6 +1,5 @@
 require 'rubygems'
 require 'appium_lib'
-require_relative '../../appium-training/login_tests'
 
 module GoogleLoginer
   def self.loginWithGoogleAccount(email, password)

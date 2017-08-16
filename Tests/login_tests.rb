@@ -4,7 +4,7 @@ require 'test/unit'
 require 'rest-client'
 require 'nokogiri'
 require 'require_all'
-require_relative 'user_data_depot'
+require_relative '../user_data_depot'
 require_all 'pages'
 require_all 'services'
 
