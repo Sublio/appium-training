@@ -11,16 +11,24 @@ require_all 'services'
 class LoginTestsIos < Test::Unit::TestCase
   attr_reader :driver
 
-  @@platform = if ARGV.include?('android')
-
+  @@platform = if ARGV.include? 'android1'
+                 'android1'
+               elsif ARGV.include? 'android2'
+                 'android2'
+               elsif ARGV.include? 'android'
                  'android'
                else
                  'ios'
                end
 
   def setup
-    puts 'login tests'
-    if @@platform == 'android'
+    puts 'bookmarks test'
+
+    if @@platform == 'android1'
+      caps = Appium.load_appium_txt file: File.join(Dir.pwd, 'caps/appiumAndroidCaps1.txt')
+    elsif @@platform == 'android2'
+      caps = Appium.load_appium_txt file: File.join(Dir.pwd, 'caps/appiumAndroidCaps2.txt')
+    elsif @@platform == 'android'
       caps = Appium.load_appium_txt file: File.join(Dir.pwd, 'caps/appiumAndroidCaps.txt')
     else
       caps = Appium.load_appium_txt file: File.join(Dir.pwd, 'caps/appiumiOSCaps.txt')
@@ -29,6 +37,7 @@ class LoginTestsIos < Test::Unit::TestCase
     @driver = Appium::Driver.new(caps)
     Appium.promote_appium_methods self.class
     @driver.start_driver
+
   end
 
   def teardown

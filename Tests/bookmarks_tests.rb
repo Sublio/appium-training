@@ -9,16 +9,25 @@ require_all 'services'
 class BookmarksiOS < Test::Unit::TestCase
   attr_reader :driver
 
-  @@platform = if ARGV.include? 'android'
-
+  @@platform = if ARGV.include? 'android1'
+                 'android1'
+               elsif ARGV.include? 'android2'
+                 'android2'
+               elsif ARGV.include? 'android'
                  'android'
                else
                  'ios'
                end
 
+
   def setup
     puts 'bookmarks test'
-    if @@platform == 'android'
+
+    if @@platform == 'android1'
+      caps = Appium.load_appium_txt file: File.join(Dir.pwd, 'caps/appiumAndroidCaps1.txt')
+    elsif @@platform == 'android2'
+      caps = Appium.load_appium_txt file: File.join(Dir.pwd, 'caps/appiumAndroidCaps2.txt')
+    elsif @@platform == 'android'
       caps = Appium.load_appium_txt file: File.join(Dir.pwd, 'caps/appiumAndroidCaps.txt')
     else
       caps = Appium.load_appium_txt file: File.join(Dir.pwd, 'caps/appiumiOSCaps.txt')
@@ -28,7 +37,7 @@ class BookmarksiOS < Test::Unit::TestCase
     Appium.promote_appium_methods self.class
     @driver.start_driver
 
-    loginWithMail
+    LoginTestsIos.new(@driver).loginWithMail
   end
 
   def teardown
@@ -71,30 +80,6 @@ class BookmarksiOS < Test::Unit::TestCase
  # def testBookmarkFilter: end
 
   private
-
-  def loginWithMail(mail = 'sublio@rambler.ru', pass = 'avatar1260')
-    welcomePage = WELCOME_PAGE.new(@driver)
-    welcomePage.loginWithEmailButton.click
-    loginPage = ENTER_EMAIL_PAGE.new(@driver)
-    loginPage.emailField.type mail
-    wait { loginPage.nextButton }
-    loginPage.nextButton.click
-    passwordPage = ENTER_PASS_PAGE.new(@driver)
-
-    sleep 2
-
-    passwordPage.passField.type pass
-
-    wait { passwordPage.nextButton }
-
-    passwordPage.nextButton.click
-
-    homePage = HOME.new(@driver)
-
-    wait { homePage.searchButton.displayed? }
-
-    homePage.enableNotificationsIfNeeded
-  end
   def checkBookmarkHasAdded
     bottomBar = BOTTOM_NAV_BAR.new(@driver)
     bottomBar.bookmarksButton.click
