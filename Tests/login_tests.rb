@@ -22,7 +22,6 @@ class LoginTestsIos < Test::Unit::TestCase
                end
 
   def setup
-    puts 'bookmarks test'
 
     if @@platform == 'android1'
       caps = Appium.load_appium_txt file: File.join(Dir.pwd, 'caps/appiumAndroidCaps1.txt')
@@ -34,7 +33,7 @@ class LoginTestsIos < Test::Unit::TestCase
       caps = Appium.load_appium_txt file: File.join(Dir.pwd, 'caps/appiumiOSCaps.txt')
     end
 
-    @driver = Appium::Driver.new(caps)
+    @driver = Appium::Driver.new(caps, global_driver = true)
     Appium.promote_appium_methods self.class
     @driver.start_driver
 

@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-gem 'appium_lib',         '~>9.4.4'
+gem 'appium_lib'
 gem 'chunky_png'
 gem 'nokogiri'
 gem 'require_all'

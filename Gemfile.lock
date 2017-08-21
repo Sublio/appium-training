@@ -1,11 +1,11 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    appium_lib (9.4.10)
+    appium_lib (9.6.0)
       awesome_print (~> 1.7)
       json (>= 1.8)
       nokogiri (~> 1.6, >= 1.6.6)
-      selenium-webdriver (>= 3.0.4, <= 3.4)
+      selenium-webdriver (~> 3.4, >= 3.4.1)
       tomlrb (~> 1.1)
     awesome_print (1.8.0)
     childprocess (0.7.1)
@@ -29,7 +29,7 @@ GEM
       mini_portile2 (~> 2.2.0)
     numerizer (0.1.1)
     parallel (1.12.0)
-    parallel_tests (2.14.2)
+    parallel_tests (2.14.3)
       parallel
     require_all (1.4.0)
     rest-client (2.0.2)
@@ -50,10 +50,9 @@ GEM
       rspec-support (~> 3.6.0)
     rspec-support (3.6.0)
     rubyzip (1.2.1)
-    selenium-webdriver (3.4.0)
+    selenium-webdriver (3.5.1)
       childprocess (~> 0.5)
       rubyzip (~> 1.0)
-      websocket (~> 1.0)
     spec (5.3.4)
       chronic_duration (~> 0.10.2)
     test-unit (2.5.5)
@@ -61,13 +60,12 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.4)
-    websocket (1.2.4)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  appium_lib (~> 9.4.4)
+  appium_lib
   chunky_png
   nokogiri
   parallel_tests

@@ -1,16 +1,12 @@
 require 'rubygems'
 require 'appium_lib'
 require 'test/unit'
-require 'rest-client'
-require 'nokogiri'
 require 'require_all'
-require 'rspec-expectations'
-require_relative '../user_data_depot'
 require_relative 'login_tests'
 require_all 'pages'
 require_all 'services'
 
-class FeedTests < Test::Unit::TestCase
+class Messaging < Test::Unit::TestCase
   attr_reader :driver
 
   @@platform = if ARGV.include? 'android1'
@@ -40,30 +36,12 @@ class FeedTests < Test::Unit::TestCase
     Appium.promote_appium_methods self.class
     @driver.start_driver
 
-    LoginTestsIos.new(@driver).loginWithMail
+    LoginTestsIos.new(@driver).loginWithMail #login before each test in this class
   end
 
   def teardown
-    @driver.driver_quit
+    @driver_quit
   end
 
-  def testReportFirstCellFromFeed
-    feed = FEED.new(@driver)
 
-    wait { feed.searchButton.displayed? }
-
-    feed.swipeRightOnCellByIndex 0 #unfortunately only first cell from feed for now :()
-
-    if device_is_android?
-
-      feed.reportButton.click
-    else
-
-      action = Appium::TouchAction.new.tap(x: 39, y: 99) #this is a hankey, need to workaround for that
-      action.perform
-
-      reportPage = REPORT_PAGE.new (@driver)
-      expect(reportPage.reportStaticText).to be_displayed
-    end
-  end
 end
