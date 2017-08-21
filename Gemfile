@@ -2,10 +2,9 @@
 
 source 'https://rubygems.org'
 
-gem 'appium_lib'
+gem 'appium_lib',         '~>9.4.4'
 gem 'chunky_png'
 gem 'nokogiri'
-gem 'require_all'
 gem 'parallel_tests'
 gem 'rest-client',        '~> 2.0.2'
 gem 'rspec',              '~> 3.6.0'
