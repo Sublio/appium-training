@@ -1,4 +1,5 @@
 require 'parallel_tests'
+require 'rubygems'
 
 task default: :test_ios
 

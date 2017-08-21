@@ -97,19 +97,19 @@ class LoginTestsIos < Test::Unit::TestCase
     welcomePage.loginWithEmailButton.click
     loginPage = ENTER_EMAIL_PAGE.new(@driver)
     loginPage.emailField.type mail
-    sleep 3
     loginPage.nextButton.click
+    sleep (5)
     passwordPage = ENTER_PASS_PAGE.new(@driver)
 
     passwordPage.passField.type pass
 
-    sleep 3
-
     passwordPage.nextButton.click
+
+    sleep 10
 
     homePage = HOME.new(@driver)
 
-    sleep 3
+    sleep 10
 
     homePage.enableNotificationsIfNeeded
   end
