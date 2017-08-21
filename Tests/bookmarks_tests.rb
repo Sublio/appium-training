@@ -8,7 +8,6 @@ require_all 'services'
 
 class BookmarksiOS < Test::Unit::TestCase
   attr_reader :driver
-
   @@platform = if ARGV.include? 'android1'
                  'android1'
                elsif ARGV.include? 'android2'
@@ -87,4 +86,5 @@ class BookmarksiOS < Test::Unit::TestCase
 
     assert(bookmark_page.bookmarks.count > 0, 'Bookmarks table is empty!!!')
   end
+
 end

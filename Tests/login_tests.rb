@@ -42,7 +42,6 @@ class LoginTestsIos < Test::Unit::TestCase
   def teardown
     @driver.driver_quit
   end
-
   def testLoginWithMail(mail = 'sublio@rambler.ru', pass = 'avatar1260')
     welcomePage = WELCOME_PAGE.new(driver)
     welcomePage.loginWithEmailButton.click
@@ -87,7 +86,6 @@ class LoginTestsIos < Test::Unit::TestCase
 
     wait { text 'Welcome' }
   end
-
 
   ############## Shared methods section ##########################
 

@@ -17,7 +17,7 @@ task :test_android_parallel do
   # appium -p 4492 -bp 2252 -U 192.168.56.101:5555
   # appium -p 4491 -bp 2251 -U 192.168.56.102:5555
   #ruby "Tests/bookmarks_tests.rb" "android1"
-  #ruby "Tests/bookmarks_tests.rb" "android2" -example laucnch commane
+  #ruby "Tests/bookmarks_tests.rb" "android2" -example laucnch command
   ruby 'Tests/all_the_tests.rb', 'android1'
   ruby 'Tests/all_the_tests.rb', 'android2'
 end

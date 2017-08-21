@@ -66,4 +66,5 @@ class FeedTests < Test::Unit::TestCase
       expect(reportPage.reportStaticText).to be_displayed
     end
   end
+
 end
