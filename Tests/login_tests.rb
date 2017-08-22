@@ -5,8 +5,8 @@ require 'rest-client'
 require 'nokogiri'
 require 'require_all'
 require_relative '../user_data_depot'
-require_all 'pages'
-require_all 'services'
+Dir["/pages/*.rb"].each {|file| require file }
+Dir["/services/*.rb"].each {|file| require file }
 
 class LoginTestsIos < Test::Unit::TestCase
   attr_reader :driver
