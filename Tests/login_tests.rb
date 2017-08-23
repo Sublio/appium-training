@@ -52,7 +52,7 @@ class LoginTestsIos < Test::Unit::TestCase
     passwordPage = ENTER_PASS_PAGE.new(driver)
     sleep 2
     passwordPage.passField.type pass
-
+    sleep (3)
     passwordPage.nextButton.click
 
     homePage = HOME.new(driver)

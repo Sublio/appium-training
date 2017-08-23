@@ -2,7 +2,7 @@
     Name = "Android"
     deviceName =  "Custom Phone"
     platformName = 'Android'
-    appPackage = "com.android.settings"
-    appActivity = ".Settings"
+    appPackage = "com.android.contacts.ContactsApplication"
+    appActivity = "com.android.contacts.activities.PeopleActivity"
     autoAcceptAlerts = 'true'
     fullReset = 'true'

@@ -7,7 +7,8 @@ class UserDataDepot
      { 'mail' => 'b@b.b', 'password' => 'qweasdzxc' },
      { 'mail' => 'leon@rambler.com', 'password' => 'qweasdzxc' },
      { 'mail' => 'andrey@ko.com', 'password' => 'qweasdzxc' },
-     { 'mail' => 'prodavets@mail.com', 'password' => 'qweasdzxc' }]
+     { 'mail' => 'prodavets@mail.com', 'password' => 'qweasdzxc' },
+     { 'mail' => 'John-Appleseed@mac.com', 'password' => 'qweasdzxc' }]
   end
 end
 
