@@ -1,0 +1,8 @@
+[caps]
+    Name = "Android"
+    deviceName =  "Custom Phone"
+    platformName = 'Android'
+    appPackage = "com.android.settings"
+    appActivity = ".Settings"
+    autoAcceptAlerts = 'true'
+    fullReset = 'true'

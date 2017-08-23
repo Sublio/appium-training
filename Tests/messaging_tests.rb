@@ -28,7 +28,6 @@ class Messaging < Test::Unit::TestCase
   def teardown
     @driverIos.driver_quit
     @driverAndroid.driver_quit
-
   end
 
   def testSendMessageFromUserOneToUserTwo
