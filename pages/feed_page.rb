@@ -1,4 +1,5 @@
 require 'appium_lib'
+
 class FEED
   attr_accessor :driver
 

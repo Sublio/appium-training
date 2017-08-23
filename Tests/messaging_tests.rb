@@ -6,6 +6,8 @@ require 'require_all'
 require_relative '../services/loginer'
 require_relative '../../appium-training/user_data_depot'
 require_relative '../../appium-training/pages/bottom_nav_bar_page'
+require_relative '../../appium-training/pages/message_page'
+require_relative '../../appium-training/pages/chat_page'
 Dir['/pages/*.rb'].each {|file| require file }
 Dir['/services/*.rb'].each {|file| require file }
 
@@ -36,13 +38,53 @@ class Messaging < Test::Unit::TestCase
     #using John-appleseed fake account for ios
     #using Leon Kennedy fake account for Android
 
-    phrase1 = Faker::HarryPotter.quote #phrase for user Leon
-    phrase2 = Faker::HarryPotter.quote #phrase for user John
+
 
     bottomNavBarIos = BOTTOM_NAV_BAR.new(@@driverIos)
     bottomNavBarIos.contactsButton.click
     bottomNavBarAndroid = BOTTOM_NAV_BAR.new(@@driverAndroid)
     bottomNavBarAndroid.contactsButton.click
+    messagePageIOS = MESSAGE_PAGE.new(@@driverIos)
+
+    cellJohn = @@driverIos.texts('John Appleseed').first
+    if (cellJohn.displayed?)
+      cellJohn.click
+    else
+      fail 'There is no cell visible'
+    end
+
+    cellLeon = @@driverAndroid.texts('Leon Kennedy').first
+    if (cellLeon.displayed?)
+      cellLeon.click
+    else
+      fail 'There is no cell visible'
+    end
+
+    sleep(2)
+
+    chatPageIos = CHAT_PAGE.new(@@driverIos)
+
+    phrase1 = Faker::HarryPotter.quote #phrase for user Leon
+    sleep 2
+    chatPageIos.textField.type(phrase1)
+    sleep 1
+    chatPageIos.sendButton.click
+    sleep (2)
+    puts 'Checking android side'
+
+    texts = @@driverAndroid.find_elements(:class_name, 'android.widget.TextView')
+    found = 0
+    for text in texts
+
+      if text.text == phrase1
+        puts 'Cool we found it'
+        found +=1
+      end
+    end
+
+    if found == 0
+      fail('We are cant find sended message')
+    end
 
   end
 

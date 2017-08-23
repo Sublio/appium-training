@@ -86,7 +86,7 @@ class MESSAGE_PAGE
   def consiergeCell
     if device_is_android?
 
-      find_element(:xpath, '//android.widget.TextView[@content-desc="Search"]')
+      #TODO Android lcoator
 
     else
 
@@ -98,7 +98,7 @@ class MESSAGE_PAGE
   def pullToRefresh
     if device_is_android?
 
-      find_element(:xpath, '//android.widget.TextView[@content-desc="Search"]')
+      #TODO Android locators
 
     else
 
@@ -112,13 +112,35 @@ class MESSAGE_PAGE
   def cellFromTableByIndex(index)
     if device_is_android?
 
-      find_element(:xpath, '//android.widget.TextView[@content-desc="Search"]')
-
+      #TODO Android locators
     else
 
       find_element(:class_name, 'XCUIElementTypeTable').find_elements(:class_name, 'XCUIElementTypeCell')[index + 2]
     end
 
+  end
+
+  def textFromCellFromTableByIndex(index)
+    if device_is_android?
+
+      #TODO Android locators
+
+    else
+
+      find_elements(:class_name, 'XCUIElementTypeCell')[index].find_elements(:class_name,'XCUIElementTypeStaticText')
+    end
+
+  end
+
+  def cells
+    if device_is_android?
+
+      #TODO Android locators
+
+    else
+
+      find_element(:class_name, 'XCUIElementTypeTable').find_elements(:class_name, 'XCUIElementTypeCell')
+    end
   end
 
 end
